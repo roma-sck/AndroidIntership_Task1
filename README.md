@@ -24,6 +24,15 @@ Requirments:
 Good luck!
 _________________________________________________________________
 
+This is my version
 
+![alt tag](screenshot_Task1_my.png)
+
+I think, that possible UI mistakes are:
+1) the toolbar title is incomprehensible abbreviation or article. There should be something more informative;
+2) the arrow "back button" bigger than needs
+3) one divider - paler than the other;
+4) the gaps between the dividers not the same size;
+5) the page content have text data on Russian and Ukrainian languages at the same time;
 
 
