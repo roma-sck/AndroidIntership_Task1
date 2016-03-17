@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:background="#DCDCDC"
+    android:background="@color/scrollView_background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/content"
@@ -11,140 +11,113 @@
     android:paddingTop="@dimen/activity_vertical_margin">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/LinearLayout"
         android:orientation="vertical">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/LinearLayout"
             android:orientation="vertical"
             android:layout_marginBottom="@dimen/text_bottom_top_margin" >
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="18dp"
-                android:layout_weight="2"
+                style="@style/TextView_Base"
+                android:textSize="18sp"
                 android:layout_marginBottom="@dimen/text_bottom_top_margin"
-                android:text="Комунальне господарство"/>
+                android:text="@string/tv_branch"/>
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="16dp"
-                android:layout_weight="1"
-                android:textColor="@android:color/white"
+                style="@style/TextView_Base"
+                android:textColor="@color/tv_status_text_color"
                 android:background="@drawable/rounded_textview"
                 android:paddingTop="2dp"
                 android:paddingBottom="2dp"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:text=" В роботі "/>
+                android:text="@string/tv_status"/>
 
         </LinearLayout>
 
         <View style="@style/Divider"/>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/LinearLayout"
             android:layout_marginBottom="@dimen/text_bottom_top_margin"
             android:layout_marginTop="@dimen/text_bottom_top_margin"
             android:gravity="center_horizontal" >
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="16dp"
+                style="@style/TextView_Base"
                 android:layout_weight="2"
-                android:text="Створено"/>
+                android:text="@string/tv_created_text"/>
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="16dp"
+                style="@style/TextView_Base"
                 android:layout_weight="1"
                 android:gravity="end"
-                android:text="25 лютого 2016"/>
+                android:text="@string/tv_created_date"/>
 
         </LinearLayout>
 
         <View style="@style/Divider"/>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/LinearLayout"
             android:layout_marginBottom="@dimen/text_bottom_top_margin"
             android:layout_marginTop="@dimen/text_bottom_top_margin"
             android:gravity="center_horizontal" >
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="16dp"
+                style="@style/TextView_Base"
                 android:layout_weight="2"
-                android:text="Зареєстровано"/>
+                android:text="@string/tv_registered_text"/>
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="16dp"
+                style="@style/TextView_Base"
                 android:layout_weight="1"
                 android:gravity="end"
-                android:text="26 лютого 2016"/>
+                android:text="@string/tv_registered_date"/>
 
         </LinearLayout>
 
         <View style="@style/Divider"/>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/LinearLayout"
             android:layout_marginBottom="@dimen/text_bottom_top_margin"
             android:layout_marginTop="@dimen/text_bottom_top_margin"
             android:gravity="center_horizontal" >
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="16dp"
+                style="@style/TextView_Base"
                 android:layout_weight="2"
-                android:text="Вирішити до"/>
+                android:text="@string/tv_resolve_text"/>
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="16dp"
+                style="@style/TextView_Base"
                 android:layout_weight="1"
                 android:gravity="end"
-                android:text="29 лютого 2016"/>
+                android:text="@string/tv_resolve_date"/>
 
         </LinearLayout>
 
         <View style="@style/Divider"/>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/LinearLayout"
             android:layout_marginBottom="@dimen/text_bottom_top_margin"
             android:layout_marginTop="@dimen/text_bottom_top_margin"
             android:gravity="center_horizontal" >
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="16dp"
+                style="@style/TextView_Base"
                 android:layout_weight="2"
-                android:text="Відповідальний"/>
+                android:text="@string/tv_responsible_text"/>
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="16dp"
+                style="@style/TextView_Base"
                 android:layout_weight="1"
                 android:gravity="end"
-                android:text="Дніпропетровский МВК"/>
+                android:text="@string/tv_responsible_name"/>
 
         </LinearLayout>
 
@@ -156,7 +129,7 @@
             android:textSize="16dp"
             android:layout_marginBottom="@dimen/text_bottom_top_margin"
             android:layout_marginTop="@dimen/text_bottom_top_margin"
-            android:text="У Дніпропетровську дуже багато відкритих люків, тому зараз ми не змінюємо старі залізні люки на нові, а закриваємо ті, які відкриті."/>
+            android:text="@string/tv_description"/>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_view"

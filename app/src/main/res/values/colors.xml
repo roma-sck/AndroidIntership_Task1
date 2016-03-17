@@ -5,4 +5,7 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF8C00</color>
 
+    <color name="scrollView_background">#DCDCDC</color>
+
+    <color name="tv_status_text_color">@android:color/white</color>
 </resources>

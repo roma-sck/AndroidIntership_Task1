@@ -10,27 +10,30 @@ import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
+public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ImageViewHolder> {
 
     private Context mContext;
     private String[] mDataSet;
+    private static final String ASSETS_URL = "file:///android_asset/";
 
     public RecyclerViewAdapter(Context context, String[] dataSet) {
-        this.mContext = context;
-        this.mDataSet = dataSet;
+        mContext = context;
+        mDataSet = dataSet;
     }
 
     @Override
-    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ImageViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        // creates a ViewHolder by inflating the ImageView into the parent RecyclerView
         View view = LayoutInflater.from(mContext).inflate(R.layout.item_image, parent, false);
-        return new MyViewHolder(view);
+        return new ImageViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(RecyclerViewAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(ImageViewHolder holder, int position) {
+        // called to display an image in the RecyclerView list
         Picasso.with(mContext)
-                .load(mDataSet[position])
-                .into(holder.myImage);
+                .load(ASSETS_URL + mDataSet[position])
+                .into(holder.mImageView);
     }
 
     @Override
@@ -38,19 +41,22 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return mDataSet.length;
     }
 
-    class MyViewHolder extends RecyclerView.ViewHolder {
+    class ImageViewHolder extends RecyclerView.ViewHolder {
 
-        private ImageView myImage;
+        // ViewHolder contains a single ImageView
+        private ImageView mImageView;
 
-        public MyViewHolder(View itemView) {
+        public ImageViewHolder(View itemView) {
             super(itemView);
-            myImage = (ImageView) itemView.findViewById(R.id.myImage);
+            mImageView = (ImageView) itemView.findViewById(R.id.myImage);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(mContext, " RecyclerView's image №" +(getAdapterPosition() + 1) + ": " +
-                            (mDataSet[getAdapterPosition()]), Toast.LENGTH_SHORT).show();
+                    String text = mContext.getString(R.string.toast_text) + (getAdapterPosition()
+                            + 1) + "\n " + (mDataSet[getAdapterPosition()]);
+
+                    Toast.makeText(mContext, text, Toast.LENGTH_SHORT).show();
                 }
             });
         }

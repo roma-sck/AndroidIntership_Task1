@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        setTitle("Звернення № СЕ-1257218");
+        setTitle(getString(R.string.toolbar_title));
 
         initToolbar();
 
@@ -30,12 +30,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initToolbar() {
-        // Find the toolbar view inside the activity layout
+        // find the toolbar view inside the activity layout
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        // Sets the Toolbar to act as the ActionBar for this Activity window.
-        // Make sure the toolbar exists in the activity and is not null
+
+        // sets the Toolbar to act as the ActionBar for this Activity window.
         setSupportActionBar(toolbar);
 
+        // make sure the toolbar exists in the activity and is not null
         assert getSupportActionBar() != null;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -54,6 +55,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         assert recyclerView != null;
         recyclerView.setHasFixedSize(true);
 
+        // to display downloaded images in a horizontal scrollable list
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this,
                 LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(layoutManager);
@@ -68,8 +70,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         for (int i = 0; i < childCount; i++) {
             View view = viewGroup.getChildAt(i);
-            // if ViewGroup - finding inside
+
             if (view instanceof ViewGroup) {
+                // if ViewGroup - finding inside
                 setOnClickAllViews((ViewGroup) view);
             } else if (view instanceof TextView || view instanceof ImageView) {
                 // if view - set onClick
@@ -80,6 +83,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
+        //view.getClass().getSimpleName() + "-" + getResources().getResourceName(view.getId()
         // shows simple name of clicked view
         Toast.makeText(this, view.getClass().getSimpleName(), Toast.LENGTH_SHORT).show();
     }

@@ -2,13 +2,29 @@
 
     <string name="app_name">AndroidIntership_Task1</string>
 
+    <string name="toolbar_title">Appeal № СЕ-1257218</string>
+
+    <string name="tv_branch">Municipal economy</string>
+    <string name="tv_status">In work</string>
+    <string name="tv_created_text">Created</string>
+    <string name="tv_created_date">25 February 2016</string>
+    <string name="tv_registered_text">Registered</string>
+    <string name="tv_registered_date">26 February 2016</string>
+    <string name="tv_resolve_text">Resolve to</string>
+    <string name="tv_resolve_date">29 February 2016</string>
+    <string name="tv_responsible_text">Responsible</string>
+    <string name="tv_responsible_name">Dnipropetrovsk ERM</string>
+    <string name="tv_description">"In Dnepropetrovsk, a lot of open manholes, so now we do not change the old iron hatches to new and close those that are open."</string>
+
+    <string name="toast_text">"RecyclerView's image №"</string>
+
     <string-array name="image_urls">
-        <item>file:///android_asset/cat_01.jpg</item>
-        <item>file:///android_asset/cat_02.jpg</item>
-        <item>file:///android_asset/cat_03.jpg</item>
-        <item>file:///android_asset/cat_04.jpg</item>
-        <item>file:///android_asset/cat_05.jpg</item>
-        <item>file:///android_asset/cat_06.jpg</item>
+        <item>cat_01.jpg</item>
+        <item>cat_02.jpg</item>
+        <item>cat_03.jpg</item>
+        <item>cat_04.jpg</item>
+        <item>cat_05.jpg</item>
+        <item>cat_06.jpg</item>
     </string-array>
 
 </resources>
