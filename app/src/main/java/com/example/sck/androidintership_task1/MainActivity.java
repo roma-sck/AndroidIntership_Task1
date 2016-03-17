@@ -90,7 +90,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      */
     @Override
     public void onClick(View view) {
-        //view.getClass().getSimpleName() + "-" + getResources().getResourceName(view.getId()
         Toast.makeText(this, view.getClass().getSimpleName(), Toast.LENGTH_SHORT).show();
     }
 }
