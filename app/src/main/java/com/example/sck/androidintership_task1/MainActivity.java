@@ -29,14 +29,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setOnClickAllViews(allContent);
     }
 
+    /**
+     *   find the toolbar view inside the activity layout.
+     *   sets the Toolbar to act as the ActionBar for this Activity window.
+     *   make sure the toolbar exists in the activity and is not null, add backbutton onClick
+     */
     private void initToolbar() {
-        // find the toolbar view inside the activity layout
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-
-        // sets the Toolbar to act as the ActionBar for this Activity window.
         setSupportActionBar(toolbar);
 
-        // make sure the toolbar exists in the activity and is not null
         assert getSupportActionBar() != null;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -49,13 +50,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
     }
 
+    /**
+     *  find RecyclerView, set display downloaded images in a horizontal scrollable list
+     */
     private void initRecyclerView() {
-
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         assert recyclerView != null;
         recyclerView.setHasFixedSize(true);
 
-        // to display downloaded images in a horizontal scrollable list
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this,
                 LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(layoutManager);
@@ -81,10 +83,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    /**
+     * shows simple name of clicked view
+     *
+     * @param view view
+     */
     @Override
     public void onClick(View view) {
         //view.getClass().getSimpleName() + "-" + getResources().getResourceName(view.getId()
-        // shows simple name of clicked view
         Toast.makeText(this, view.getClass().getSimpleName(), Toast.LENGTH_SHORT).show();
     }
 }

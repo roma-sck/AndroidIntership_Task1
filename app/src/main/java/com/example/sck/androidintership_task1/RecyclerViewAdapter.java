@@ -21,16 +21,28 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         mDataSet = dataSet;
     }
 
+    /**
+     * creates a ViewHolder by inflating the ImageView into the parent RecyclerView
+     *
+     * @param parent RecyclerView
+     * @param viewType type
+     * @return ViewHolder
+     */
     @Override
     public ImageViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        // creates a ViewHolder by inflating the ImageView into the parent RecyclerView
         View view = LayoutInflater.from(mContext).inflate(R.layout.item_image, parent, false);
         return new ImageViewHolder(view);
     }
 
+    /**
+     *  called to display an image in the RecyclerView list
+     *  images load by Picasso library
+     *
+     * @param holder ImageViewHolder
+     * @param position current img position
+     */
     @Override
     public void onBindViewHolder(ImageViewHolder holder, int position) {
-        // called to display an image in the RecyclerView list
         Picasso.with(mContext)
                 .load(ASSETS_URL + mDataSet[position])
                 .into(holder.mImageView);
@@ -41,8 +53,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return mDataSet.length;
     }
 
+    /**
+     *  ViewHolder class, contains a single ImageView
+     */
     class ImageViewHolder extends RecyclerView.ViewHolder {
-        // ViewHolder contains a single ImageView
+
         private ImageView mImageView;
 
         public ImageViewHolder(View itemView) {
