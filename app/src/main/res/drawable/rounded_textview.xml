@@ -5,9 +5,9 @@
     <solid android:color="@color/colorAccent"/>
 
     <corners
-        android:bottomRightRadius="15dp"
-        android:bottomLeftRadius="15dp"
-        android:topLeftRadius="15dp"
-        android:topRightRadius="15dp"/>
+        android:bottomRightRadius="@dimen/rounded_textview_corners_radius"
+        android:bottomLeftRadius="@dimen/rounded_textview_corners_radius"
+        android:topLeftRadius="@dimen/rounded_textview_corners_radius"
+        android:topRightRadius="@dimen/rounded_textview_corners_radius"/>
 
 </shape>
