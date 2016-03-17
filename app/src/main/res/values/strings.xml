@@ -1,3 +1,14 @@
 <resources>
+
     <string name="app_name">AndroidIntership_Task1</string>
+
+    <string-array name="image_urls">
+        <item>file:///android_asset/cat_01.jpg</item>
+        <item>file:///android_asset/cat_02.jpg</item>
+        <item>file:///android_asset/cat_03.jpg</item>
+        <item>file:///android_asset/cat_04.jpg</item>
+        <item>file:///android_asset/cat_05.jpg</item>
+        <item>file:///android_asset/cat_06.jpg</item>
+    </string-array>
+
 </resources>
