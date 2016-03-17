@@ -19,8 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginBottom="@dimen/text_bottom_top_margin"
-            android:layout_marginTop="@dimen/text_bottom_top_margin" >
+            android:layout_marginBottom="@dimen/text_bottom_top_margin" >
 
             <TextView
                 android:layout_width="wrap_content"
@@ -28,13 +27,12 @@
                 android:textSize="18dp"
                 android:layout_weight="2"
                 android:layout_marginBottom="@dimen/text_bottom_top_margin"
-                android:layout_marginTop="@dimen/text_bottom_top_margin"
                 android:text="Комунальне господарство"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18dp"
+                android:textSize="16dp"
                 android:layout_weight="1"
                 android:textColor="@android:color/white"
                 android:background="@drawable/rounded_textview"
