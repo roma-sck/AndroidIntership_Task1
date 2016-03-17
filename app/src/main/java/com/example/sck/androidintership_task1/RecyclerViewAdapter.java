@@ -14,7 +14,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     private Context mContext;
     private String[] mDataSet;
-    private static final String ASSETS_URL = "file:///android_asset/";
+    private static final String ASSETS_URL = "file:///android_asset/images/";
 
     public RecyclerViewAdapter(Context context, String[] dataSet) {
         mContext = context;
@@ -42,7 +42,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     class ImageViewHolder extends RecyclerView.ViewHolder {
-
         // ViewHolder contains a single ImageView
         private ImageView mImageView;
 

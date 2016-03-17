@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#4682B4</color>
+    <color name="colorPrimaryDark">#1e69a7</color>
     <color name="colorAccent">#FF8C00</color>
 
     <color name="scrollView_background">#DCDCDC</color>
 
-    <color name="tv_status_text_color">@android:color/white</color>
+    <color name="text_color_white">@android:color/white</color>
+
+    <color name="tv_text_leftside_color">#808080</color>
+    <color name="tv_text_rightside_color">#000000</color>
+
+
+
 </resources>

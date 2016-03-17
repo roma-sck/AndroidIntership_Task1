@@ -21,18 +21,18 @@
 
             <TextView
                 style="@style/TextView_Base"
-                android:textSize="18sp"
+                android:textSize="@dimen/tv_branch_text_size"
                 android:layout_marginBottom="@dimen/text_bottom_top_margin"
                 android:text="@string/tv_branch"/>
 
             <TextView
                 style="@style/TextView_Base"
-                android:textColor="@color/tv_status_text_color"
+                android:textColor="@color/text_color_white"
                 android:background="@drawable/rounded_textview"
-                android:paddingTop="2dp"
-                android:paddingBottom="2dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
+                android:paddingTop="@dimen/tv_status_padding_topbottom"
+                android:paddingBottom="@dimen/tv_status_padding_topbottom"
+                android:paddingLeft="@dimen/tv_status_padding_leftright"
+                android:paddingRight="@dimen/tv_status_padding_leftright"
                 android:text="@string/tv_status"/>
 
         </LinearLayout>
@@ -46,13 +46,11 @@
             android:gravity="center_horizontal" >
 
             <TextView
-                style="@style/TextView_Base"
-                android:layout_weight="2"
+                style="@style/TextView_LeftSide"
                 android:text="@string/tv_created_text"/>
 
             <TextView
                 style="@style/TextView_Base"
-                android:layout_weight="1"
                 android:gravity="end"
                 android:text="@string/tv_created_date"/>
 
@@ -67,13 +65,11 @@
             android:gravity="center_horizontal" >
 
             <TextView
-                style="@style/TextView_Base"
-                android:layout_weight="2"
+                style="@style/TextView_LeftSide"
                 android:text="@string/tv_registered_text"/>
 
             <TextView
                 style="@style/TextView_Base"
-                android:layout_weight="1"
                 android:gravity="end"
                 android:text="@string/tv_registered_date"/>
 
@@ -88,13 +84,11 @@
             android:gravity="center_horizontal" >
 
             <TextView
-                style="@style/TextView_Base"
-                android:layout_weight="2"
+                style="@style/TextView_LeftSide"
                 android:text="@string/tv_resolve_text"/>
 
             <TextView
                 style="@style/TextView_Base"
-                android:layout_weight="1"
                 android:gravity="end"
                 android:text="@string/tv_resolve_date"/>
 
@@ -109,13 +103,11 @@
             android:gravity="center_horizontal" >
 
             <TextView
-                style="@style/TextView_Base"
-                android:layout_weight="2"
+                style="@style/TextView_LeftSide"
                 android:text="@string/tv_responsible_text"/>
 
             <TextView
                 style="@style/TextView_Base"
-                android:layout_weight="1"
                 android:gravity="end"
                 android:text="@string/tv_responsible_name"/>
 
@@ -124,9 +116,7 @@
         <View style="@style/Divider"/>
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textSize="16dp"
+            style="@style/TextView_Base"
             android:layout_marginBottom="@dimen/text_bottom_top_margin"
             android:layout_marginTop="@dimen/text_bottom_top_margin"
             android:text="@string/tv_description"/>
@@ -134,8 +124,8 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_marginTop="10dp"/>
+            android:layout_height="@dimen/recycler_view_height"
+            android:layout_marginTop="@dimen/recycler_view_margin"/>
 
     </LinearLayout>
 

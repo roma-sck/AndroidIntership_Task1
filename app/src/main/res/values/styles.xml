@@ -12,7 +12,7 @@
         <!-- This would set the toolbar's background color -->
         <item name="android:background">@color/colorPrimary</item>
         <!-- android:textColorPrimary is the color of the title text in the Toolbar  -->
-        <item name="android:textColorPrimary">@android:color/holo_blue_light</item>
+        <item name="android:textColorPrimary">@color/text_color_white</item>
     </style>
 
     <!-- This configures the styles for the title within the Toolbar  -->
@@ -28,14 +28,24 @@
 
     <style name="Divider">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">1dp</item>
+        <item name="android:layout_height">@dimen/divider_height</item>
         <item name="android:background">?android:attr/listDivider</item>
     </style>
 
     <style name="TextView_Base">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">@dimen/tv_base_text_size</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:fontFamily">"Arial"</item>
+    </style>
+
+    <style name="TextView_LeftSide" parent="TextView_Base">
+        <item name="android:textColor">@color/tv_text_leftside_color</item>
+    </style>
+
+    <style name="TextView_RightSide" parent="TextView_Base">
+        <item name="android:textColor">@color/tv_text_rightside_color</item>
     </style>
 
 </resources>

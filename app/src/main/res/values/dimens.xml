@@ -8,4 +8,14 @@
 
     <dimen name="text_bottom_top_margin">10dp</dimen>
 
+    <dimen name="tv_branch_text_size">18sp</dimen>
+    <dimen name="tv_status_padding_topbottom">2dp</dimen>
+    <dimen name="tv_status_padding_leftright">10dp</dimen>
+    <dimen name="tv_base_text_size">16sp</dimen>
+
+    <dimen name="divider_height">1dp</dimen>
+
+    <dimen name="recycler_view_height">150dp</dimen>
+    <dimen name="recycler_view_margin">10dp</dimen>
+
 </resources>
