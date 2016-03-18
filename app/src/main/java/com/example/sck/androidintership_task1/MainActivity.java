@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        assert getSupportActionBar() != null;
+        assert getSupportActionBar() != null; //[Comment] Just add if statement
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         assert toolbar != null;
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      */
     private void initRecyclerView() {
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        assert recyclerView != null;
+        assert recyclerView != null;  //[Comment] I think we don't need this. Recyclerview always is non-null object
         recyclerView.setHasFixedSize(true);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this,

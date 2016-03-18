@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:paddingRight="10dp">
+    <!-- [Comment] Hardcode -->
 
     <ImageView
         android:id="@+id/myImage"

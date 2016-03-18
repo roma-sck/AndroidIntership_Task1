@@ -56,7 +56,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     /**
      *  ViewHolder class, contains a single ImageView
      */
-    class ImageViewHolder extends RecyclerView.ViewHolder {
+     class ImageViewHolder extends RecyclerView.ViewHolder {
 
         private ImageView mImageView;
 
