@@ -30,16 +30,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     /**
-     *   find the toolbar view inside the activity layout.
-     *   sets the Toolbar to act as the ActionBar for this Activity window.
-     *   make sure the toolbar exists in the activity and is not null, add backbutton onClick
+     * find the toolbar view inside the activity layout.
+     * sets the Toolbar to act as the ActionBar for this Activity window.
+     * make sure the toolbar exists in the activity and is not null, add backbutton onClick
      */
     private void initToolbar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        assert getSupportActionBar() != null;
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
 
         assert toolbar != null;
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -51,11 +52,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     /**
-     *  find RecyclerView, set display downloaded images in a horizontal scrollable list
+     * find RecyclerView, set display downloaded images in a horizontal scrollable list
      */
     private void initRecyclerView() {
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        assert recyclerView != null;
         recyclerView.setHasFixedSize(true);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this,

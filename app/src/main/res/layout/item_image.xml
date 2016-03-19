@@ -3,7 +3,7 @@
     android:layout_width="200dp"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingRight="10dp">
+    android:paddingRight="@dimen/rv_image_layout_paddingright">
 
     <ImageView
         android:id="@+id/myImage"

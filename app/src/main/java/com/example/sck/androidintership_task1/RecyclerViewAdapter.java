@@ -24,7 +24,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     /**
      * creates a ViewHolder by inflating the ImageView into the parent RecyclerView
      *
-     * @param parent RecyclerView
+     * @param parent   RecyclerView
      * @param viewType type
      * @return ViewHolder
      */
@@ -35,10 +35,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     /**
-     *  called to display an image in the RecyclerView list
-     *  images load by Picasso library
+     * called to display an image in the RecyclerView list
+     * images load by Picasso library
      *
-     * @param holder ImageViewHolder
+     * @param holder   ImageViewHolder
      * @param position current img position
      */
     @Override
@@ -54,7 +54,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     /**
-     *  ViewHolder class, contains a single ImageView
+     * ViewHolder class, contains a single ImageView
      */
     class ImageViewHolder extends RecyclerView.ViewHolder {
 

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:background="@color/scrollView_background"
+    android:id="@+id/content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/content"
+    android:background="@color/scrollView_background"
+    android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -16,116 +16,116 @@
 
         <LinearLayout
             style="@style/LinearLayout"
-            android:orientation="vertical"
-            android:layout_marginBottom="@dimen/text_bottom_top_margin" >
+            android:layout_marginBottom="@dimen/text_bottom_top_margin"
+            android:orientation="vertical">
 
             <TextView
                 style="@style/TextView_Base"
-                android:textSize="@dimen/tv_branch_text_size"
                 android:layout_marginBottom="@dimen/text_bottom_top_margin"
-                android:text="@string/tv_branch"/>
+                android:text="@string/tv_branch"
+                android:textSize="@dimen/tv_branch_text_size" />
 
             <TextView
                 style="@style/TextView_Base"
-                android:textColor="@color/text_color_white"
                 android:background="@drawable/rounded_textview"
-                android:paddingTop="@dimen/tv_status_padding_topbottom"
                 android:paddingBottom="@dimen/tv_status_padding_topbottom"
                 android:paddingLeft="@dimen/tv_status_padding_leftright"
                 android:paddingRight="@dimen/tv_status_padding_leftright"
-                android:text="@string/tv_status"/>
+                android:paddingTop="@dimen/tv_status_padding_topbottom"
+                android:text="@string/tv_status"
+                android:textColor="@color/text_color_white" />
 
         </LinearLayout>
 
-        <View style="@style/Divider"/>
+        <View style="@style/Divider" />
 
         <LinearLayout
             style="@style/LinearLayout"
             android:layout_marginBottom="@dimen/text_bottom_top_margin"
             android:layout_marginTop="@dimen/text_bottom_top_margin"
-            android:gravity="center_horizontal" >
+            android:gravity="center_horizontal">
 
             <TextView
                 style="@style/TextView_LeftSide"
-                android:text="@string/tv_created_text"/>
+                android:text="@string/tv_created_text" />
 
             <TextView
                 style="@style/TextView_Base"
                 android:gravity="end"
-                android:text="@string/tv_created_date"/>
+                android:text="@string/tv_created_date" />
 
         </LinearLayout>
 
-        <View style="@style/Divider"/>
+        <View style="@style/Divider" />
 
         <LinearLayout
             style="@style/LinearLayout"
             android:layout_marginBottom="@dimen/text_bottom_top_margin"
             android:layout_marginTop="@dimen/text_bottom_top_margin"
-            android:gravity="center_horizontal" >
+            android:gravity="center_horizontal">
 
             <TextView
                 style="@style/TextView_LeftSide"
-                android:text="@string/tv_registered_text"/>
+                android:text="@string/tv_registered_text" />
 
             <TextView
                 style="@style/TextView_Base"
                 android:gravity="end"
-                android:text="@string/tv_registered_date"/>
+                android:text="@string/tv_registered_date" />
 
         </LinearLayout>
 
-        <View style="@style/Divider"/>
+        <View style="@style/Divider" />
 
         <LinearLayout
             style="@style/LinearLayout"
             android:layout_marginBottom="@dimen/text_bottom_top_margin"
             android:layout_marginTop="@dimen/text_bottom_top_margin"
-            android:gravity="center_horizontal" >
+            android:gravity="center_horizontal">
 
             <TextView
                 style="@style/TextView_LeftSide"
-                android:text="@string/tv_resolve_text"/>
+                android:text="@string/tv_resolve_text" />
 
             <TextView
                 style="@style/TextView_Base"
                 android:gravity="end"
-                android:text="@string/tv_resolve_date"/>
+                android:text="@string/tv_resolve_date" />
 
         </LinearLayout>
 
-        <View style="@style/Divider"/>
+        <View style="@style/Divider" />
 
         <LinearLayout
             style="@style/LinearLayout"
             android:layout_marginBottom="@dimen/text_bottom_top_margin"
             android:layout_marginTop="@dimen/text_bottom_top_margin"
-            android:gravity="center_horizontal" >
+            android:gravity="center_horizontal">
 
             <TextView
                 style="@style/TextView_LeftSide"
-                android:text="@string/tv_responsible_text"/>
+                android:text="@string/tv_responsible_text" />
 
             <TextView
                 style="@style/TextView_Base"
                 android:gravity="end"
-                android:text="@string/tv_responsible_name"/>
+                android:text="@string/tv_responsible_name" />
 
         </LinearLayout>
 
-        <View style="@style/Divider"/>
+        <View style="@style/Divider" />
 
         <TextView
             style="@style/TextView_Base"
             android:layout_marginBottom="@dimen/text_bottom_top_margin"
             android:layout_marginTop="@dimen/text_bottom_top_margin"
-            android:text="@string/tv_description"/>
+            android:text="@string/tv_description" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="@dimen/recycler_view_height"
-            android:layout_marginTop="@dimen/recycler_view_margin"/>
+            android:layout_marginTop="@dimen/recycler_view_margin" />
 
     </LinearLayout>
 
