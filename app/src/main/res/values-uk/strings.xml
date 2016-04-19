@@ -4,17 +4,17 @@
 
     <string name="toolbar_title">Звернення № СЕ-1257218</string>
 
-    <string name="tv_branch">Комунальне господарство</string>
-    <string name="tv_status">В роботі</string>
-    <string name="tv_created_text">Створено</string>
-    <string name="tv_created_date">25 лютого 2016</string>
-    <string name="tv_registered_text">Зареєстровано</string>
-    <string name="tv_registered_date">26 лютого 2016</string>
-    <string name="tv_resolve_text">Вирішити до</string>
-    <string name="tv_resolve_date">29 лютого 2016</string>
-    <string name="tv_responsible_text">Відповідальний</string>
-    <string name="tv_responsible_name">Дніпропетровский МВК</string>
-    <string name="tv_description">"У Дніпропетровську дуже багато відкритих люків, тому зараз ми не змінюємо старі залізні люки на нові, а закриваємо ті, які відкриті."</string>
+    <string name="detail_text_branch">Комунальне господарство</string>
+    <string name="detail_text_status">В роботі</string>
+    <string name="detail_text_created_text">Створено</string>
+    <string name="detail_text_created_date">25 лютого 2016</string>
+    <string name="detail_text_registered_text">Зареєстровано</string>
+    <string name="detail_text_registered_date">26 лютого 2016</string>
+    <string name="detail_text_resolve_text">Вирішити до</string>
+    <string name="detail_text_resolve_date">29 лютого 2016</string>
+    <string name="detail_text_responsible_text">Відповідальний</string>
+    <string name="detail_text_responsible_name">Дніпропетровский МВК</string>
+    <string name="detail_text_description">"У Дніпропетровську дуже багато відкритих люків, тому зараз ми не змінюємо старі залізні люки на нові, а закриваємо ті, які відкриті."</string>
 
     <string name="toast_text">"RecyclerView's зображення №"</string>
 

@@ -10,13 +10,13 @@ import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ImageViewHolder> {
+public class ImagesRecyclerAdapter extends RecyclerView.Adapter<ImagesRecyclerAdapter.ImageViewHolder> {
 
     private Context mContext;
     private String[] mDataSet;
     private static final String ASSETS_URL = "file:///android_asset/images/";
 
-    public RecyclerViewAdapter(Context context, String[] dataSet) {
+    public ImagesRecyclerAdapter(Context context, String[] dataSet) {
         mContext = context;
         mDataSet = dataSet;
     }

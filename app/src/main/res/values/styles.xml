@@ -1,16 +1,17 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+
+
+    <!-- DetailActivity styles. -->
+    <style name="AppThemeDetail" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/detailColorPrimary</item>
+        <item name="colorPrimaryDark">@color/detailColorPrimaryDark</item>
+        <item name="colorAccent">@color/detailColorAccent</item>
     </style>
 
     <style name="ToolbarTheme" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
         <!-- This would set the toolbar's background color -->
-        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:background">@color/detailColorPrimary</item>
         <!-- android:textColorPrimary is the color of the title text in the Toolbar  -->
         <item name="android:textColorPrimary">@color/text_color_white</item>
     </style>
@@ -32,20 +33,20 @@
         <item name="android:background">?android:attr/listDivider</item>
     </style>
 
-    <style name="TextView_Base">
+    <style name="DetailTextView_Base">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">@dimen/tv_base_text_size</item>
+        <item name="android:textSize">@dimen/detail_base_text_size</item>
         <item name="android:layout_weight">1</item>
         <item name="android:fontFamily">"Arial"</item>
     </style>
 
-    <style name="TextView_LeftSide" parent="TextView_Base">
-        <item name="android:textColor">@color/tv_text_leftside_color</item>
+    <style name="DetailTextView_LeftSide" parent="DetailTextView_Base">
+        <item name="android:textColor">@color/detail_text_leftside_color</item>
     </style>
 
-    <style name="TextView_RightSide" parent="TextView_Base">
-        <item name="android:textColor">@color/tv_text_rightside_color</item>
+    <style name="DetailTextView_RightSide" parent="DetailTextView_Base">
+        <item name="android:textColor">@color/detail_text_rightside_color</item>
     </style>
 
 </resources>

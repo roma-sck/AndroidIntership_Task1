@@ -1,20 +1,23 @@
 <resources>
 
-    <string name="app_name">Android Int Task1</string>
+    <string name="app_name">Android Int Task</string>
 
+
+
+    <!--DetailActivity strings-->
     <string name="toolbar_title">Appeal № СЕ-1257218</string>
 
-    <string name="tv_branch">Municipal economy</string>
-    <string name="tv_status">In work</string>
-    <string name="tv_created_text">Created</string>
-    <string name="tv_created_date">25 February 2016</string>
-    <string name="tv_registered_text">Registered</string>
-    <string name="tv_registered_date">26 February 2016</string>
-    <string name="tv_resolve_text">Resolve to</string>
-    <string name="tv_resolve_date">29 February 2016</string>
-    <string name="tv_responsible_text">Responsible</string>
-    <string name="tv_responsible_name">Dnipropetrovsk ERM</string>
-    <string name="tv_description">"In Dnepropetrovsk, a lot of open manholes, so now we do not change the old iron hatches to new and close those that are open."</string>
+    <string name="detail_text_branch">Municipal economy</string>
+    <string name="detail_text_status">In work</string>
+    <string name="detail_text_created_text">Created</string>
+    <string name="detail_text_created_date">25 February 2016</string>
+    <string name="detail_text_registered_text">Registered</string>
+    <string name="detail_text_registered_date">26 February 2016</string>
+    <string name="detail_text_resolve_text">Resolve to</string>
+    <string name="detail_text_resolve_date">29 February 2016</string>
+    <string name="detail_text_responsible_text">Responsible</string>
+    <string name="detail_text_responsible_name">Dnipropetrovsk ERM</string>
+    <string name="detail_text_description">"In Dnepropetrovsk, a lot of open manholes, so now we do not change the old iron hatches to new and close those that are open."</string>
 
     <string name="toast_text">"RecyclerView's image №"</string>
 

@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="colorPrimary">#4682B4</color>
-    <color name="colorPrimaryDark">#1e69a7</color>
-    <color name="colorAccent">#FFA500</color>
+    <!-- DetailActivity colors. -->
+    <color name="detailColorPrimary">#4682B4</color>
+    <color name="detailColorPrimaryDark">#1e69a7</color>
+    <color name="detailColorAccent">#FFA500</color>
 
     <color name="scrollView_background">#F5F5F5</color>
 
     <color name="text_color_white">@android:color/white</color>
 
-    <color name="tv_text_leftside_color">#a4a4a4</color>
-    <color name="tv_text_rightside_color">#000000</color>
+    <color name="detail_text_leftside_color">#a4a4a4</color>
+    <color name="detail_text_rightside_color">#000000</color>
 
 </resources>

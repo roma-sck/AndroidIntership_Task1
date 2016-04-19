@@ -13,6 +13,6 @@
         android:theme="@style/ToolbarTheme"
         app:titleTextAppearance="@style/Toolbar.TitleText" />
 
-    <include layout="@layout/content_main" />
+    <include layout="@layout/content_detail" />
 
 </LinearLayout>
