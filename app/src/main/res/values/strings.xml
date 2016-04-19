@@ -1,6 +1,6 @@
 <resources>
 
-    <string name="app_name">Android Int Task</string>
+    <string name="app_name">Android Intership Task</string>
 
     <!--MainActivity strings-->
     <string name="all_appeals_text">Всі звернення</string>
@@ -16,6 +16,8 @@
     <string name="action_filter_menu">Filter</string>
 
     <string name="intent_to_detail_extra_name">detail_intent</string>
+    <string name="intent_to_detail_recycler_hello_msg">"Hello from Recycler list _pos: "</string>
+    <string name="intent_to_detail_listview_hello_msg">"Hello from ListView list _pos: "</string>
 
     <!--DetailActivity strings-->
     <string name="toolbar_title">Appeal № СЕ-1257218</string>

@@ -65,7 +65,7 @@ public class FragmentListView extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                String text = "Hello from ListView list _pos:" + (position + 1);
+                String text = getString(R.string.intent_to_detail_listview_hello_msg) + (position + 1);
 
                 Intent openDetail = new Intent(getActivity(), DetailActivity.class);
                 openDetail.putExtra(getActivity().getString(R.string.intent_to_detail_extra_name), text);

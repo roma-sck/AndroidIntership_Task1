@@ -97,7 +97,8 @@ public class RecyclerListAdapter extends RecyclerView.Adapter<RecyclerListAdapte
                 @Override
                 public void onClick(View v) {
 
-                    String text = "Hello from Recycler list _pos:" + (getAdapterPosition() + 1);
+                    String text = mContext.getString(R.string.intent_to_detail_recycler_hello_msg)
+                            + (getAdapterPosition() + 1);
 
                     Intent openDetail = new Intent(mContext, DetailActivity.class);
                     openDetail.putExtra(mContext.getString(R.string.intent_to_detail_extra_name), text);
