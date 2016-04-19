@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_all_appeals"
+            android:icon="@drawable/ic_issues"
+            android:title="@string/all_appeals_text" />
+        <item
+            android:id="@+id/nav_appeals_on_map"
+            android:icon="@drawable/ic_map"
+            android:title="Звернення на мапі" />
+    </group>
+
+    <group android:id="@+id/nav_sing_in">
+        <item
+            android:title="Увійти в акаунт" />
+    </group>
+
+
+</menu>

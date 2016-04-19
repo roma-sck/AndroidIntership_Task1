@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/list_item_margin_bottom"
+    app:cardCornerRadius="@dimen/list_item_card_corner_radius" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="@dimen/list_item_leftside_width"
+            android:layout_height="match_parent"
+            android:padding="@dimen/list_item_padding" >
+
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/list_item_image_margin_top" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:id="@+id/like_icon"
+                    android:layout_width="@dimen/list_item_like_icon_width"
+                    android:layout_height="@dimen/list_item_like_icon_height"
+                    android:alpha="0.19"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_thumb_up" />
+
+                <com.example.sck.androidintership_task1.utils.RobotoTextView
+                    android:id="@+id/like_count"
+                    style="@style/ListItemText_14sp"
+                    android:text="49"
+                    android:layout_weight="1"
+                    android:textStyle="bold"
+                    android:alpha="0.23" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="@dimen/list_item_divider_width"
+            android:layout_height="match_parent"
+            android:background="@color/color_black"
+            android:alpha="0.11" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/list_item_padding" >
+
+            <com.example.sck.androidintership_task1.utils.RobotoTextView
+                android:id="@+id/title"
+                style="@style/ListItemText_Base"
+                android:layout_height="@dimen/list_item_title_text_height"
+                android:textStyle="normal"
+                android:text="Title"
+                android:textSize="@dimen/list_item_title_text_size" />
+
+            <com.example.sck.androidintership_task1.utils.RobotoTextView
+                android:id="@+id/address"
+                style="@style/ListItemText_14sp"
+                android:text="Address"
+                android:textStyle="italic"
+                android:layout_below="@+id/title"
+                android:layout_alignLeft="@+id/title"
+                android:layout_alignStart="@+id/title"
+                android:layout_marginTop="@dimen/list_item_address_margin_top"
+                android:alpha="0.54" />
+
+            <com.example.sck.androidintership_task1.utils.RobotoTextView
+                android:id="@+id/date"
+                style="@style/ListItemText_14sp"
+                android:text="Date"
+                android:textStyle="bold"
+                android:layout_marginTop="@dimen/list_item_date_margin_top"
+                android:layout_below="@+id/address"
+                android:layout_alignLeft="@+id/address"
+                android:layout_alignStart="@+id/address"
+                android:alpha="0.54" />
+
+            <com.example.sck.androidintership_task1.utils.RobotoTextView
+                android:id="@+id/daysLeft"
+                style="@style/ListItemText_14sp"
+                android:text="Days Left"
+                android:textStyle="bold"
+                android:layout_marginRight="@dimen/list_item_days_left_margin_right"
+                android:layout_marginEnd="@dimen/list_item_days_left_margin_right"
+                android:layout_alignTop="@+id/date"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:alpha="0.54" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

@@ -1,8 +1,34 @@
 <resources>
 
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
 
+    <!--MainActivity theme.-->
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
 
-    <!-- DetailActivity styles. -->
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="ListItemText_Base">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">@color/color_black</item>
+    </style>
+
+    <style name="ListItemText_14sp" parent="ListItemText_Base">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/list_item_14sp_text_size</item>
+    </style>
+
+    <!-- DetailActivity theme. -->
     <style name="AppThemeDetail" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/detailColorPrimary</item>
         <item name="colorPrimaryDark">@color/detailColorPrimaryDark</item>

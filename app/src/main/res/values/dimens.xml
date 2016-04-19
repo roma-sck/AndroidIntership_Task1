@@ -1,5 +1,33 @@
 <resources>
 
+    <!--MainActivity and other dimens-->
+    <dimen name="nav_header_height">80dp</dimen>
+    <dimen name="nav_title_text_size">24sp</dimen>
+    <dimen name="nav_title_text_marginBottom">24dp</dimen>
+    <dimen name="nav_title_text_marginLeft">16dp</dimen>
+
+    <dimen name="main_activity_horizontal_margin">8dp</dimen>
+    <dimen name="main_activity_vertical_margin">8dp</dimen>
+
+    <dimen name="action_button_marginBottom">72dp</dimen>
+    <dimen name="action_button_marginRight">24dp</dimen>
+
+    <dimen name="list_item_margin_bottom">2dp</dimen>
+    <dimen name="list_item_card_corner_radius">8dp</dimen>
+    <dimen name="list_item_leftside_width">80dp</dimen>
+    <dimen name="list_item_padding">16dp</dimen>
+    <dimen name="list_item_image_margin_top">5dp</dimen>
+    <dimen name="list_item_like_icon_width">20dp</dimen>
+    <dimen name="list_item_like_icon_height">18dp</dimen>
+    <dimen name="list_item_14sp_text_size">14sp</dimen>
+    <dimen name="list_item_title_text_size">16sp</dimen>
+    <dimen name="list_item_title_text_height">40dp</dimen>
+    <dimen name="list_item_address_margin_top">6dp</dimen>
+    <dimen name="list_item_date_margin_top">18dp</dimen>
+    <dimen name="list_item_days_left_margin_right">21dp</dimen>
+    <dimen name="list_item_divider_width">1dp</dimen>
+
+
     <!-- DetailActivity dimens. -->
     <dimen name="detail_activity_horizontal_margin">16dp</dimen>
     <dimen name="detail_activity_vertical_margin">16dp</dimen>

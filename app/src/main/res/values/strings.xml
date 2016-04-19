@@ -2,7 +2,20 @@
 
     <string name="app_name">Android Int Task</string>
 
+    <!--MainActivity strings-->
+    <string name="all_appeals_text">Всі звернення</string>
 
+    <string name="appeals_tab_inWork">В роботі</string>
+    <string name="appeals_tab_done">Виконано</string>
+    <string name="appeals_tab_notDone">Очікує</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title_text">e-contact</string>
+
+    <string name="action_filter_menu">Filter</string>
+
+    <string name="intent_to_detail_extra_name">detail_intent</string>
 
     <!--DetailActivity strings-->
     <string name="toolbar_title">Appeal № СЕ-1257218</string>

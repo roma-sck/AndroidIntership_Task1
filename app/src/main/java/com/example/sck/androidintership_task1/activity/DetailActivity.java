@@ -1,4 +1,4 @@
-package com.example.sck.androidintership_task1;
+package com.example.sck.androidintership_task1.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,6 +11,9 @@ import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.sck.androidintership_task1.adapters.ImagesRecyclerAdapter;
+import com.example.sck.androidintership_task1.R;
 
 public class DetailActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -27,6 +30,12 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
 
         ViewGroup allContent = (ScrollView) findViewById(R.id.content);
         setOnClickAllViews(allContent);
+
+
+        // get text sent from Fragment
+        Bundle bundle = this.getIntent().getExtras();
+        String text = bundle.getString(getString(R.string.intent_to_detail_extra_name));
+        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
     }
 
     /**

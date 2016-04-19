@@ -1,4 +1,4 @@
-package com.example.sck.androidintership_task1;
+package com.example.sck.androidintership_task1.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.sck.androidintership_task1.R;
 import com.squareup.picasso.Picasso;
 
 public class ImagesRecyclerAdapter extends RecyclerView.Adapter<ImagesRecyclerAdapter.ImageViewHolder> {
