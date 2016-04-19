@@ -85,16 +85,16 @@ public class MainActivity extends AppCompatActivity
         mDataModel = new SerializableModel();
         List<ListItemModel> data = new ArrayList<>();
 
-        data.add(new ListItemModel(R.drawable.ic_trash, "49", "Демонтаж інших об’єктів, що входять до переліку мал...", "Вул. Вадима Гетьмана, 42", "Кві 24, 2016", "-14 днів"));
-        data.add(new ListItemModel(R.drawable.ic_trash, "49", "Питання стосовно нарахування боргу електрое...", "Вул. Вадима Гетьмана, 42", "Кві 24, 2016", "-14 днів"));
-        data.add(new ListItemModel(R.drawable.ic_trash, "49", "Ремонт та обслуговування ліфтів", "Вул. Вадима Гетьмана, 42", "Кві 24, 2016", "-14 днів"));
-        data.add(new ListItemModel(R.drawable.ic_trash, "49", "Прибирання та санітарній стан території", "Вул. Вадима Гетьмана, 42", "Кві 24, 2016", "-14 днів"));
-        data.add(new ListItemModel(R.drawable.ic_trash, "49", "Прибирання та санітарній стан території", "Вул. Вадима Гетьмана, 42", "Кві 24, 2016", "-14 днів"));
-        data.add(new ListItemModel(R.drawable.ic_trash, "49", "Демонтаж інших об’єктів, що входять до переліку мал...", "Вул. Вадима Гетьмана, 42", "Кві 24, 2016", "-14 днів"));
-        data.add(new ListItemModel(R.drawable.ic_trash, "49", "Питання стосовно нарахування боргу електрое...", "Вул. Вадима Гетьмана, 42", "Кві 24, 2016", "-14 днів"));
-        data.add(new ListItemModel(R.drawable.ic_trash, "49", "Ремонт та обслуговування ліфтів", "Вул. Вадима Гетьмана, 42", "Кві 24, 2016", "-14 днів"));
-        data.add(new ListItemModel(R.drawable.ic_trash, "49", "Прибирання та санітарній стан території", "Вул. Вадима Гетьмана, 42", "Кві 24, 2016", "-14 днів"));
-        data.add(new ListItemModel(R.drawable.ic_trash, "49", "Прибирання та санітарній стан території", "Вул. Вадима Гетьмана, 42", "Кві 24, 2016", "-14 днів"));
+        int groupIc = R.drawable.ic_trash;
+        String likeCount = getString(R.string.list_item_data_like_count);
+        String address = getString(R.string.list_item_data_address);
+        String date = getString(R.string.list_item_data_date);
+        String daysLeft = getString(R.string.list_item_data_days_left);
+        String[] titles = getResources().getStringArray(R.array.list_item_data_appeals_title);
+        
+        for(int i = 0; i < 10; i++) {
+            data.add(new ListItemModel(groupIc, likeCount, titles[i], address, date, daysLeft));
+        }
 
         mDataModel.setData(data);
     }
