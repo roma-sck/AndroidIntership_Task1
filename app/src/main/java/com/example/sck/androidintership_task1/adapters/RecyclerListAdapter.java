@@ -17,7 +17,9 @@ import com.example.sck.androidintership_task1.model.ListItemModel;
 import java.util.Collections;
 import java.util.List;
 
-
+/**
+ * RecyclerListAdapter class, make a View for each item in the FragmentRecyclerList (ViewPager tab1, tab2)
+ */
 public class RecyclerListAdapter extends RecyclerView.Adapter<RecyclerListAdapter.RecyclerAdapterHolder> {
 
     protected List<ListItemModel> mList = Collections.emptyList();
@@ -28,6 +30,13 @@ public class RecyclerListAdapter extends RecyclerView.Adapter<RecyclerListAdapte
         mContext = context;
     }
 
+    /**
+     * creates a ViewHolder by inflating the CardView list item into the parent RecyclerView
+     *
+     * @param parent   RecyclerView
+     * @param viewType type
+     * @return ViewHolder
+     */
     @Override
     public RecyclerAdapterHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
@@ -37,6 +46,13 @@ public class RecyclerListAdapter extends RecyclerView.Adapter<RecyclerListAdapte
         return holder;
     }
 
+    /**
+     * called to display list item in the RecyclerView list
+     * set data to each list_item_row view from mList
+     *
+     * @param holder   RecyclerAdapterHolder
+     * @param position current list item position
+     */
     @Override
     public void onBindViewHolder(RecyclerAdapterHolder holder, int position) {
 
@@ -54,6 +70,9 @@ public class RecyclerListAdapter extends RecyclerView.Adapter<RecyclerListAdapte
     }
 
 
+    /**
+     * ViewHolder class
+     */
     class RecyclerAdapterHolder extends RecyclerView.ViewHolder {
 
         private CardView mCardView;

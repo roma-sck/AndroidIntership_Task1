@@ -55,12 +55,17 @@ public class MainActivity extends AppCompatActivity
         setUpViewPager();
     }
 
+    /**
+     * set the toolbar view inside the activity layout.
+     * sets the Toolbar to act as the ActionBar for this Activity window.
+     */
     private void setUpToolbar() {
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
 
         ActionBar actionbar = getSupportActionBar ();
         if(actionbar != null) {
+            // custom home indicator icon
             actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
             actionbar.setDisplayHomeAsUpEnabled(true);
         }
@@ -94,10 +99,15 @@ public class MainActivity extends AppCompatActivity
         mDataModel.setData(data);
     }
 
+    /**
+     * setting ViewPager for each Tabs
+     *
+     */
     private void setUpViewPager() {
-        // setting ViewPager for each Tabs
+
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
 
+        // add Fragments to Tabs, transfer model with data
         MainPagerAdapter pagerAdapter = new MainPagerAdapter(getSupportFragmentManager());
         pagerAdapter.addFragment(FragmentRecyclerList.getInstance(mDataModel), getString(R.string.appeals_tab_inWork));
         pagerAdapter.addFragment(FragmentRecyclerList.getInstance(mDataModel), getString(R.string.appeals_tab_done));
@@ -131,6 +141,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.action_filter_menu) {
+            // do something
             return true;
         } else if (id == android.R.id.home) {
             mDrawer.openDrawer(GravityCompat.START);

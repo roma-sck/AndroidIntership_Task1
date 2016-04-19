@@ -3,6 +3,7 @@ package com.example.sck.androidintership_task1.fragments;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -70,7 +71,7 @@ public class FragmentListView extends Fragment {
             }
         });
 
-        //ViewCompat.setNestedScrollingEnabled(listView, true);
+        ViewCompat.setNestedScrollingEnabled(listView, true);
     }
 
 }

@@ -15,6 +15,9 @@ import com.example.sck.androidintership_task1.model.ListItemModel;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * ListViewAdapter class, make a View for each item in the FragmentListView (ViewPager tab3)
+ */
 public class ListViewAdapter extends BaseAdapter {
 
     protected List<ListItemModel> mList = Collections.emptyList();
