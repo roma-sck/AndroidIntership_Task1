@@ -42,7 +42,6 @@
                 <com.example.sck.androidintership_task1.utils.RobotoTextView
                     android:id="@+id/like_count"
                     style="@style/ListItemText_14sp"
-                    android:text="49"
                     android:layout_weight="1"
                     android:textStyle="bold"
                     android:alpha="0.23" />
@@ -68,13 +67,11 @@
                 style="@style/ListItemText_Base"
                 android:layout_height="@dimen/list_item_title_text_height"
                 android:textStyle="normal"
-                android:text="Title"
                 android:textSize="@dimen/list_item_title_text_size" />
 
             <com.example.sck.androidintership_task1.utils.RobotoTextView
                 android:id="@+id/address"
                 style="@style/ListItemText_14sp"
-                android:text="Address"
                 android:textStyle="italic"
                 android:layout_below="@+id/title"
                 android:layout_alignLeft="@+id/title"
@@ -85,7 +82,6 @@
             <com.example.sck.androidintership_task1.utils.RobotoTextView
                 android:id="@+id/date"
                 style="@style/ListItemText_14sp"
-                android:text="Date"
                 android:textStyle="bold"
                 android:layout_marginTop="@dimen/list_item_date_margin_top"
                 android:layout_below="@+id/address"
@@ -96,7 +92,6 @@
             <com.example.sck.androidintership_task1.utils.RobotoTextView
                 android:id="@+id/daysLeft"
                 style="@style/ListItemText_14sp"
-                android:text="Days Left"
                 android:textStyle="bold"
                 android:layout_marginRight="@dimen/list_item_days_left_margin_right"
                 android:layout_marginEnd="@dimen/list_item_days_left_margin_right"

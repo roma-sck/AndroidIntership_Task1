@@ -13,11 +13,14 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title_text">e-contact</string>
 
+    <string name="nav_menu_item_appeals_on_map_text">"Звернення на мапі"</string>
+    <string name="nav_menu_item_sing_in_text">"Увійти в акаунт"</string>
+
     <string name="action_filter_menu">Filter</string>
 
     <string name="intent_to_detail_extra_name">detail_intent</string>
-    <string name="intent_to_detail_recycler_hello_msg">"Hello from Recycler list _pos: "</string>
-    <string name="intent_to_detail_listview_hello_msg">"Hello from ListView list _pos: "</string>
+    <string name="intent_to_detail_recycler_msg">"from Recycler list _pos: "</string>
+    <string name="intent_to_detail_listview_msg">"from ListView list _pos: "</string>
 
     <string name="list_item_data_like_count">"49"</string>
     <string name="list_item_data_address">"Вул. Вадима Гетьмана, 42"</string>

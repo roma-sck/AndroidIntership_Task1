@@ -2,6 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
+
         <item
             android:id="@+id/nav_all_appeals"
             android:icon="@drawable/ic_issues"
@@ -9,12 +10,15 @@
         <item
             android:id="@+id/nav_appeals_on_map"
             android:icon="@drawable/ic_map"
-            android:title="Звернення на мапі" />
+            android:title="@string/nav_menu_item_appeals_on_map_text" />
+
     </group>
 
     <group android:id="@+id/nav_sing_in">
+
         <item
-            android:title="Увійти в акаунт" />
+            android:title="@string/nav_menu_item_sing_in_text" />
+
     </group>
 
 

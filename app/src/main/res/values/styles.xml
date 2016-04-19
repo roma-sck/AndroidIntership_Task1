@@ -29,7 +29,7 @@
     </style>
 
     <style name="NavigationDrawerStyle">
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">@dimen/nav_drawer_item_text_size</item>
         <item name="android:fontFamily">@string/font_fontFamily_medium</item>
         <item name="android:textStyle">bold</item>
         <item name="android:alpha">0.69</item>

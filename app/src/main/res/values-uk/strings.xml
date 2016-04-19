@@ -1,6 +1,43 @@
 <resources>
 
-    <string name="app_name">Android Int Task1</string>
+    <string name="app_name">Android Intership Task</string>
+
+    <!--MainActivity strings-->
+    <string name="all_appeals_text">Всі звернення</string>
+
+    <string name="appeals_tab_inWork">В роботі</string>
+    <string name="appeals_tab_done">Виконано</string>
+    <string name="appeals_tab_notDone">Очікує</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title_text">e-contact</string>
+
+    <string name="nav_menu_item_appeals_on_map_text">"Звернення на мапі"</string>
+    <string name="nav_menu_item_sing_in_text">"Увійти в акаунт"</string>
+
+    <string name="action_filter_menu">Filter</string>
+
+    <string name="intent_to_detail_extra_name">detail_intent</string>
+    <string name="intent_to_detail_recycler_msg">"from Recycler list _pos: "</string>
+    <string name="intent_to_detail_listview_msg">"from ListView list _pos: "</string>
+
+    <string name="list_item_data_like_count">"49"</string>
+    <string name="list_item_data_address">"Вул. Вадима Гетьмана, 42"</string>
+    <string name="list_item_data_date">"Кві 24, 2016"</string>
+    <string name="list_item_data_days_left">"-14 днів"</string>
+    <string-array name="list_item_data_appeals_title">
+        <item>"Демонтаж інших об’єктів, що входять до переліку мал..."</item>
+        <item>"Питання стосовно нарахування боргу електрое..."</item>
+        <item>"Ремонт та обслуговування ліфтів"</item>
+        <item>"Прибирання та санітарній стан території"</item>
+        <item>"Демонтаж інших об’єктів, що входять до переліку мал..."</item>
+        <item>"Питання стосовно нарахування боргу електрое..."</item>
+        <item>"Ремонт та обслуговування ліфтів"</item>
+        <item>"Прибирання та санітарній стан території"</item>
+        <item>"Демонтаж інших об’єктів, що входять до переліку мал..."</item>
+        <item>"Питання стосовно нарахування боргу електрое..."</item>
+    </string-array>
 
     <string name="toolbar_title">Звернення № СЕ-1257218</string>
 

@@ -39,7 +39,7 @@
         android:clickable="true"
         app:layout_anchor="@+id/viewpager"
         app:backgroundTint="@color/action_button_color"
-        app:layout_behavior="com.example.sck.androidintership_task1.utils.ActionBtnScrollBehavior"
+        app:layout_behavior=".utils.ActionBtnScrollBehavior"
         app:layout_anchorGravity="bottom|end" />
 
 </android.support.design.widget.CoordinatorLayout>
