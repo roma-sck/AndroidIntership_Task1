@@ -3,7 +3,7 @@
 
 Create screen with controls
 
-![alt tag](screenshot_task2.png)
+![alt tag](screenshots/screenshot_task2.png)
 
 It should be 3 tabs and Navigation drawer with test data (10 items). 
 
@@ -26,7 +26,7 @@ _________________________________________________________________
 
 This is my version
 
-![alt tag](screenshot_task2_my.png)
+![alt tag](screenshots/screenshot_task2_my.png)
 
 
 _________________________________________________________________
