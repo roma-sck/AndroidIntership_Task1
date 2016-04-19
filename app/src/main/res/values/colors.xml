@@ -6,7 +6,7 @@
     <color name="colorPrimaryDark">#FF4A76A4</color>
     <color name="colorAccent">#FFFFFFFF</color>
 
-    <color name="action_button_color">#FFFF9C26</color>
+    <color name="action_button_color">#ff9c26</color>
 
     <color name="nav_view_background_color">#FFFAFAFA</color>
     <color name="nav_header_title_text_color">#B0FFFFFF</color>
