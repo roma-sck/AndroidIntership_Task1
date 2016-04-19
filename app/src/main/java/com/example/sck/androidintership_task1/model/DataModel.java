@@ -3,7 +3,7 @@ package com.example.sck.androidintership_task1.model;
 import java.io.Serializable;
 import java.util.List;
 
-public class SerializableModel implements Serializable {
+public class DataModel implements Serializable {
 
     private List<ListItemModel> mData;
 

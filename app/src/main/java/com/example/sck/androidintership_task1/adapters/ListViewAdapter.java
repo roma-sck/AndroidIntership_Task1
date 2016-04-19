@@ -43,6 +43,14 @@ public class ListViewAdapter extends BaseAdapter {
         return position;
     }
 
+    /**
+     * Get a View that displays the data at the specified position in the data set.
+     *
+     * @param position item position in the data set
+     * @param convertView the old view to reuse, if possible
+     * @param parent ListView
+     * @return
+     */
     public View getView(int position, View convertView, ViewGroup parent) {
 
         ListViewAdapterHolder holder;
@@ -75,6 +83,9 @@ public class ListViewAdapter extends BaseAdapter {
         return convertView;
     }
 
+    /**
+     * ViewHolder class
+     */
     private static class ListViewAdapterHolder {
 
         private CardView mCardView;

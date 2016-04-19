@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import com.example.sck.androidintership_task1.R;
 import com.example.sck.androidintership_task1.adapters.RecyclerListAdapter;
 import com.example.sck.androidintership_task1.model.ListItemModel;
-import com.example.sck.androidintership_task1.model.SerializableModel;
+import com.example.sck.androidintership_task1.model.DataModel;
 
 import java.util.List;
 
@@ -21,9 +21,15 @@ public class FragmentRecyclerList extends Fragment {
     private List<ListItemModel> mData;
 
     public FragmentRecyclerList() {
+        // empty constructor
     }
 
-    public static FragmentRecyclerList getInstance(SerializableModel mModel) {
+    /**
+     * Static factory method that takes an SerializableModel parameter,
+     * initializes the fragment's arguments, and returns the
+     * new fragment to the client.
+     */
+    public static FragmentRecyclerList getInstance(DataModel mModel) {
 
         FragmentRecyclerList fragment = new FragmentRecyclerList();
         Bundle bundle = new Bundle();
@@ -39,7 +45,7 @@ public class FragmentRecyclerList extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_recycler_list, container, false);
 
-        SerializableModel model = (SerializableModel) getArguments().getSerializable(RECYCLER_KEY);
+        DataModel model = (DataModel) getArguments().getSerializable(RECYCLER_KEY);
         if(model != null) {
             mData = model.getData();
         }

@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +15,7 @@ import com.example.sck.androidintership_task1.activity.DetailActivity;
 import com.example.sck.androidintership_task1.R;
 import com.example.sck.androidintership_task1.adapters.ListViewAdapter;
 import com.example.sck.androidintership_task1.model.ListItemModel;
-import com.example.sck.androidintership_task1.model.SerializableModel;
+import com.example.sck.androidintership_task1.model.DataModel;
 
 import java.util.List;
 
@@ -26,9 +25,15 @@ public class FragmentListView extends Fragment {
     private List<ListItemModel> mData;
 
     public FragmentListView() {
+        // empty constructor
     }
 
-    public static FragmentListView getInstance(SerializableModel mModel) {
+    /**
+     * Static factory method that takes an SerializableModel parameter,
+     * initializes the fragment's arguments, and returns the
+     * new fragment to the client.
+     */
+    public static FragmentListView getInstance(DataModel mModel) {
 
         FragmentListView fragment = new FragmentListView();
         Bundle bundle = new Bundle();
@@ -45,7 +50,7 @@ public class FragmentListView extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_list_view, container,
                 false);
 
-        SerializableModel model = (SerializableModel) getArguments().getSerializable(LISTVIEW_KEY);
+        DataModel model = (DataModel) getArguments().getSerializable(LISTVIEW_KEY);
         if(model != null) {
             mData = model.getData();
         }
@@ -86,12 +91,14 @@ public class FragmentListView extends Fragment {
             public void onScroll(AbsListView view, int firstVisibleItem,
                                  int visibleItemCount, int totalItemCount) {
 
-                if(mLastFirstVisibleItem<firstVisibleItem)
+                if(mLastFirstVisibleItem < firstVisibleItem)
                 {
+                    // User scrolled down and the FAB is currently visible -> hide the FAB
                     action_button.hide();
                 }
-                if(mLastFirstVisibleItem>firstVisibleItem)
+                if(mLastFirstVisibleItem > firstVisibleItem)
                 {
+                    // User scrolled up and the FAB is currently not visible -> show the FAB
                     action_button.show();
                 }
                 mLastFirstVisibleItem = firstVisibleItem;

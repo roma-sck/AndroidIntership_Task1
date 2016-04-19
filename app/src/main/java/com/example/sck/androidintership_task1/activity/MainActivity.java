@@ -19,7 +19,7 @@ import com.example.sck.androidintership_task1.adapters.MainPagerAdapter;
 import com.example.sck.androidintership_task1.fragments.FragmentListView;
 import com.example.sck.androidintership_task1.fragments.FragmentRecyclerList;
 import com.example.sck.androidintership_task1.model.ListItemModel;
-import com.example.sck.androidintership_task1.model.SerializableModel;
+import com.example.sck.androidintership_task1.model.DataModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity
 
     private Toolbar mToolbar;
     private DrawerLayout mDrawer;
-    private SerializableModel mDataModel;
+    private DataModel mDataModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,10 +79,13 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
 
-    //Create a Data model
+    /**
+     * Create a Data model
+     * fill model with some data
+     */
     public void fillModelWithData() {
 
-        mDataModel = new SerializableModel();
+        mDataModel = new DataModel();
         List<ListItemModel> data = new ArrayList<>();
 
         int groupIc = R.drawable.ic_trash;
@@ -91,7 +94,7 @@ public class MainActivity extends AppCompatActivity
         String date = getString(R.string.list_item_data_date);
         String daysLeft = getString(R.string.list_item_data_days_left);
         String[] titles = getResources().getStringArray(R.array.list_item_data_appeals_title);
-        
+
         for(int i = 0; i < 10; i++) {
             data.add(new ListItemModel(groupIc, likeCount, titles[i], address, date, daysLeft));
         }
