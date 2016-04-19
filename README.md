@@ -39,7 +39,7 @@ _________________________________________________________________
 
 Create screen with controls
 
-![alt tag](screenshot_Task1_UI.png)
+![alt tag](screenshots/screenshot_Task1_UI.png)
 
 It should be screen with ScrollView, textviews and  horizontal recycler view with images
 
@@ -62,7 +62,7 @@ _________________________________________________________________
 
 This is my version
 
-![alt tag](screenshot_Task1_my.png)
+![alt tag](screenshots/screenshot_Task1_my.png)
 
 I think, that possible UI mistakes are:
 1) the toolbar title is incomprehensible abbreviation or article. There should be something more informative;
