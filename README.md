@@ -1,3 +1,39 @@
+# Android Intership Task2
+
+
+Create screen with controls
+
+![alt tag](screenshot_task2.png)
+
+It should be 3 tabs and Navigation drawer with test data (10 items). 
+
+Requirments: 
+- Put dimens and text sizes into res folder. 
+- Use google code style !!!!!
+- For first and second tab use recyclerview 
+- On list item click, open first task screen
+- For third tab use listview 
+- When user scrolls list, floating action button should hide with animation 
+- Use styles 
+- Minimal SDK version = 16
+- Only portrait orientation
+
+Please don’t commit .idea directory. Use master branch as default. 
+Projects that does not use at least one of requirments listed above, will not be checked.
+
+Good luck!)
+_________________________________________________________________
+
+This is my version
+
+![alt tag](screenshot_task2_my.png)
+
+
+_________________________________________________________________
+_________________________________________________________________
+_________________________________________________________________
+
+
 # Android Intership Task1
 
 
