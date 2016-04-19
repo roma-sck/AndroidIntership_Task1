@@ -2,11 +2,13 @@ package com.example.sck.androidintership_task1.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
@@ -71,7 +73,30 @@ public class FragmentListView extends Fragment {
             }
         });
 
-        ViewCompat.setNestedScrollingEnabled(listView, true);
+        listView.setOnScrollListener(new AbsListView.OnScrollListener() {
+
+            FloatingActionButton action_button = (FloatingActionButton) getActivity().findViewById(R.id.action_button);
+            private int mLastFirstVisibleItem;
+
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+
+            }
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem,
+                                 int visibleItemCount, int totalItemCount) {
+
+                if(mLastFirstVisibleItem<firstVisibleItem)
+                {
+                    action_button.hide();
+                }
+                if(mLastFirstVisibleItem>firstVisibleItem)
+                {
+                    action_button.show();
+                }
+                mLastFirstVisibleItem = firstVisibleItem;
+            }
+        });
     }
 
 }
