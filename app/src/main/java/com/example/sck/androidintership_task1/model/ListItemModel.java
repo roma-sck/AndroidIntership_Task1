@@ -2,7 +2,7 @@ package com.example.sck.androidintership_task1.model;
 
 import java.io.Serializable;
 
-public class ListItemModel implements Serializable {
+public class ListItemModel implements Serializable { //[Comment] Unused setters. Use Parcelable instead of Serializable
 
     private int mImage;
     private String mLikeCount;

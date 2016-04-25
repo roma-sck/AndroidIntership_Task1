@@ -88,7 +88,7 @@ public class ListViewAdapter extends BaseAdapter {
      */
     private static class ListViewAdapterHolder {
 
-        private CardView mCardView;
+        private CardView mCardView; //[Comment] Unused
         private ImageView mImage;
         private TextView mLikeCount;
         private TextView mTitle;

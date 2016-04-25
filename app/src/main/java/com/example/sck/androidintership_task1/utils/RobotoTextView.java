@@ -7,7 +7,7 @@ import android.widget.TextView;
 
 public class RobotoTextView extends TextView {
 
-    Context mContext;
+    Context mContext; //[Comment] Visibility modifier is wrong
 
     public RobotoTextView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
@@ -15,13 +15,13 @@ public class RobotoTextView extends TextView {
     }
 
     public RobotoTextView(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        mContext = context;
+        super(context, attrs); //this(context, attrs, 0);
+        mContext = context; //[Comment] Unnecessary
     }
 
     public RobotoTextView(Context context) {
-        super(context);
-        mContext = context;
+        super(context); //this(context, null, 0);
+        mContext = context; //[Comment] Unnecessary
     }
 
     public void setTypeface(Typeface tf, int style) {

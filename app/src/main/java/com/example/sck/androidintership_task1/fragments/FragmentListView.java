@@ -52,7 +52,7 @@ public class FragmentListView extends Fragment {
 
         DataModel model = (DataModel) getArguments().getSerializable(LISTVIEW_KEY);
         if(model != null) {
-            mData = model.getData();
+            mData = model.getData(); //[Comment] Wrong formatting
         }
 
         setUpListView(rootView);
@@ -95,12 +95,12 @@ public class FragmentListView extends Fragment {
                 {
                     // User scrolled down and the FAB is currently visible -> hide the FAB
                     action_button.hide();
-                }
+                } //[Comment] Wrong formatting
                 if(mLastFirstVisibleItem > firstVisibleItem)
                 {
                     // User scrolled up and the FAB is currently not visible -> show the FAB
                     action_button.show();
-                }
+                } //[Comment] Wrong formatting
                 mLastFirstVisibleItem = firstVisibleItem;
             }
         });

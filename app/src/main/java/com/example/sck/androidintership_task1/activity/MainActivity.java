@@ -24,6 +24,7 @@ import com.example.sck.androidintership_task1.model.DataModel;
 import java.util.ArrayList;
 import java.util.List;
 
+//[Comment] Wrong fab position, Wrong margin between list items
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -40,7 +41,7 @@ public class MainActivity extends AppCompatActivity
 
         setUpToolbar();
 
-        FloatingActionButton action_button = (FloatingActionButton) findViewById(R.id.action_button);
+        FloatingActionButton action_button = (FloatingActionButton) findViewById(R.id.action_button); //[Comment] NEVER use "_" in object names
         action_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -49,7 +50,7 @@ public class MainActivity extends AppCompatActivity
         });
 
         setUpDrawer(mToolbar);
-
+        //[Comment] Wrong formatting
         fillModelWithData();
 
         setUpViewPager();
@@ -63,7 +64,7 @@ public class MainActivity extends AppCompatActivity
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
 
-        ActionBar actionbar = getSupportActionBar ();
+        ActionBar actionbar = getSupportActionBar (); //[Comment] Wrong formatting
         if(actionbar != null) {
             // custom home indicator icon
             actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
