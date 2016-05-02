@@ -1,7 +1,7 @@
 <resources>
 
     <!--MainActivity and other dimens-->
-    <dimen name="nav_header_height">80dp</dimen>
+    <dimen name="nav_header_height">100dp</dimen>
     <dimen name="nav_title_text_size">24sp</dimen>
     <dimen name="nav_title_text_marginBottom">24dp</dimen>
     <dimen name="nav_title_text_marginLeft">16dp</dimen>
@@ -11,10 +11,9 @@
     <dimen name="main_activity_horizontal_margin">8dp</dimen>
     <dimen name="main_activity_vertical_margin">8dp</dimen>
 
-    <dimen name="action_button_marginBottom">72dp</dimen>
-    <dimen name="action_button_marginRight">24dp</dimen>
+    <dimen name="action_button_margin">24dp</dimen>
 
-    <dimen name="list_item_margin_bottom">2dp</dimen>
+    <dimen name="list_item_margin_bottom">8dp</dimen>
     <dimen name="list_item_card_corner_radius">8dp</dimen>
     <dimen name="list_item_leftside_width">80dp</dimen>
     <dimen name="list_item_padding">16dp</dimen>
@@ -29,6 +28,9 @@
     <dimen name="list_item_days_left_margin_right">21dp</dimen>
     <dimen name="list_item_divider_width">1dp</dimen>
 
+    <dimen name="listview_divider_height">8dp</dimen>
+    <dimen name="listview_margin_top">8dp</dimen>
+    <dimen name="recyclerview_margin_top">8dp</dimen>
 
     <!-- DetailActivity dimens. -->
     <dimen name="detail_activity_horizontal_margin">16dp</dimen>

@@ -17,6 +17,7 @@
         android:textStyle="bold"
         android:text="@string/nav_header_title_text"
         android:layout_marginBottom="@dimen/nav_title_text_marginBottom"
-        android:layout_marginLeft="@dimen/nav_title_text_marginLeft"/>
+        android:layout_marginLeft="@dimen/nav_title_text_marginLeft"
+        android:layout_marginStart="@dimen/nav_title_text_marginLeft"/>
 
 </LinearLayout>

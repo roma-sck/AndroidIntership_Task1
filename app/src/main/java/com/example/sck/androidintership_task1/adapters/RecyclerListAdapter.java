@@ -21,7 +21,6 @@ import java.util.List;
  * RecyclerListAdapter class, make a View for each item in the FragmentRecyclerList (ViewPager tab1, tab2)
  */
 public class RecyclerListAdapter extends RecyclerView.Adapter<RecyclerListAdapter.RecyclerAdapterHolder> {
-
     protected List<ListItemModel> mList = Collections.emptyList();
     private Context mContext;
 
@@ -39,7 +38,6 @@ public class RecyclerListAdapter extends RecyclerView.Adapter<RecyclerListAdapte
      */
     @Override
     public RecyclerAdapterHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
         View view = LayoutInflater.from(mContext).inflate(R.layout.list_item_row, parent, false);
         RecyclerAdapterHolder holder = new RecyclerAdapterHolder(view);
 
@@ -55,7 +53,6 @@ public class RecyclerListAdapter extends RecyclerView.Adapter<RecyclerListAdapte
      */
     @Override
     public void onBindViewHolder(RecyclerAdapterHolder holder, int position) {
-
         holder.mImage.setImageResource(mList.get(position).getImage());
         holder.mLikeCount.setText(mList.get(position).getLikeCount());
         holder.mTitle.setText(mList.get(position).getTitle());
@@ -69,13 +66,10 @@ public class RecyclerListAdapter extends RecyclerView.Adapter<RecyclerListAdapte
         return mList.size();
     }
 
-
     /**
      * ViewHolder class
      */
     class RecyclerAdapterHolder extends RecyclerView.ViewHolder {
-
-        private CardView mCardView;
         private ImageView mImage;
         private TextView mLikeCount;
         private TextView mTitle;
@@ -85,29 +79,13 @@ public class RecyclerListAdapter extends RecyclerView.Adapter<RecyclerListAdapte
 
         RecyclerAdapterHolder(View itemView) {
             super(itemView);
-            mCardView = (CardView) itemView.findViewById(R.id.cardView);
             mImage = (ImageView) itemView.findViewById(R.id.image);
             mLikeCount = (TextView) itemView.findViewById(R.id.like_count);
             mTitle = (TextView) itemView.findViewById(R.id.title);
             mAddress = (TextView) itemView.findViewById(R.id.address);
             mDate = (TextView) itemView.findViewById(R.id.date);
             mDaysLeft = (TextView) itemView.findViewById(R.id.daysLeft);
-
-            mCardView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    String text = mContext.getString(R.string.intent_to_detail_recycler_msg)
-                            + (getAdapterPosition() + 1);
-
-                    Intent openDetail = new Intent(mContext, DetailActivity.class);
-                    openDetail.putExtra(mContext.getString(R.string.intent_to_detail_extra_name), text);
-                    mContext.startActivity(openDetail);
-                }
-            });
         }
-
     }
-
 }
 

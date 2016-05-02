@@ -27,7 +27,6 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private Toolbar mToolbar;
     private DrawerLayout mDrawer;
     private DataModel mDataModel;
 
@@ -35,23 +34,18 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         setTitle(getString(R.string.all_appeals_text));
 
         setUpToolbar();
-
-        FloatingActionButton action_button = (FloatingActionButton) findViewById(R.id.action_button);
-        action_button.setOnClickListener(new View.OnClickListener() {
+        FloatingActionButton actionButton = (FloatingActionButton) findViewById(R.id.action_button);
+        actionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // do something
             }
         });
-
-        setUpDrawer(mToolbar);
-
+        setUpDrawer();
         fillModelWithData();
-
         setUpViewPager();
     }
 
@@ -60,21 +54,18 @@ public class MainActivity extends AppCompatActivity
      * sets the Toolbar to act as the ActionBar for this Activity window.
      */
     private void setUpToolbar() {
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(mToolbar);
-
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         ActionBar actionbar = getSupportActionBar ();
         if(actionbar != null) {
             // custom home indicator icon
             actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
             actionbar.setDisplayHomeAsUpEnabled(true);
         }
-
     }
 
-    private void setUpDrawer(Toolbar toolbar) {
+    private void setUpDrawer() {
         mDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
@@ -84,22 +75,18 @@ public class MainActivity extends AppCompatActivity
      * fill model with some data
      */
     public void fillModelWithData() {
-
-        mDataModel = new DataModel();
         List<ListItemModel> data = new ArrayList<>();
-
         int groupIc = R.drawable.ic_trash;
         String likeCount = getString(R.string.list_item_data_like_count);
         String address = getString(R.string.list_item_data_address);
         String date = getString(R.string.list_item_data_date);
         String daysLeft = getString(R.string.list_item_data_days_left);
         String[] titles = getResources().getStringArray(R.array.list_item_data_appeals_title);
-
         for(int i = 0; i < 10; i++) {
+            // add new instance of ListItemModel class with data to list
             data.add(new ListItemModel(groupIc, likeCount, titles[i], address, date, daysLeft));
         }
-
-        mDataModel.setData(data);
+        mDataModel = new DataModel(data);
     }
 
     /**
@@ -107,16 +94,13 @@ public class MainActivity extends AppCompatActivity
      *
      */
     private void setUpViewPager() {
-
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
-
         // add Fragments to Tabs, transfer model with data
         MainPagerAdapter pagerAdapter = new MainPagerAdapter(getSupportFragmentManager());
         pagerAdapter.addFragment(FragmentRecyclerList.getInstance(mDataModel), getString(R.string.appeals_tab_inWork));
         pagerAdapter.addFragment(FragmentRecyclerList.getInstance(mDataModel), getString(R.string.appeals_tab_done));
         pagerAdapter.addFragment(FragmentListView.getInstance(mDataModel), getString(R.string.appeals_tab_notDone));
         viewPager.setAdapter(pagerAdapter);
-
         // set Tabs inside ToolbarLayout
         TabLayout tabs = (TabLayout) findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
@@ -142,7 +126,6 @@ public class MainActivity extends AppCompatActivity
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here
         int id = item.getItemId();
-
         if (id == R.id.action_filter_menu) {
             // do something
             return true;
@@ -158,7 +141,6 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
         if (id == R.id.nav_all_appeals) {
             // do something
         } else if (id == R.id.nav_appeals_on_map) {
@@ -166,9 +148,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_sing_in) {
             // do something
         }
-
         mDrawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
 }

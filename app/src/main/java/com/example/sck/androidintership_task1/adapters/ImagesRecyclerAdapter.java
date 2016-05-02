@@ -12,7 +12,6 @@ import com.example.sck.androidintership_task1.R;
 import com.squareup.picasso.Picasso;
 
 public class ImagesRecyclerAdapter extends RecyclerView.Adapter<ImagesRecyclerAdapter.ImageViewHolder> {
-
     private Context mContext;
     private String[] mDataSet;
     private static final String ASSETS_URL = "file:///android_asset/images/";
@@ -58,19 +57,16 @@ public class ImagesRecyclerAdapter extends RecyclerView.Adapter<ImagesRecyclerAd
      * ViewHolder class, contains a single ImageView
      */
     class ImageViewHolder extends RecyclerView.ViewHolder {
-
         private ImageView mImageView;
 
         public ImageViewHolder(View itemView) {
             super(itemView);
             mImageView = (ImageView) itemView.findViewById(R.id.myImage);
-
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     String text = mContext.getString(R.string.toast_text) + (getAdapterPosition()
                             + 1) + "\n " + (mDataSet[getAdapterPosition()]);
-
                     Toast.makeText(mContext, text, Toast.LENGTH_SHORT).show();
                 }
             });

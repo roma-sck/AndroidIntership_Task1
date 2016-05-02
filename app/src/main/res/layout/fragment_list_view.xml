@@ -3,11 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:mContext=".fragments.FragmentTwo" >
+    tools:context=".fragments.FragmentListView" >
 
     <ListView
         android:id="@+id/appeals_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:divider="@color/color_transparent"
+        android:dividerHeight="@dimen/listview_divider_height"
+        android:layout_marginTop="@dimen/listview_margin_top" />
 
 </RelativeLayout>

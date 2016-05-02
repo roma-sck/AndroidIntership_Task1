@@ -18,6 +18,8 @@
 
     <color name="color_black">@android:color/black</color>
 
+    <color name="color_transparent">@android:color/transparent</color>
+
     <!-- DetailActivity colors. -->
     <color name="detailColorPrimary">#4682B4</color>
     <color name="detailColorPrimaryDark">#1e69a7</color>

@@ -15,8 +15,6 @@
                     android:translateX="2.000000">
                 <path
                     android:fillColor="#000000"
-                    android:fillAlpha="0.54"
-                    android:strokeAlpha="0.54"
                     android:strokeWidth="1"
                     android:pathData="M18.2570297,0 L5.01742574,0 C4.0749505,0 3.3079703,0.767227723
                         3.3079703,1.70945545 L3.3079703,2.80118812 L1.75178218,2.80118812
@@ -42,8 +40,6 @@
                         L18.5990099,19.4586634 Z" />
                 <path
                     android:fillColor="#000000"
-                    android:fillAlpha="0.54"
-                    android:strokeAlpha="0.54"
                     android:strokeWidth="1"
                     android:pathData="M16.6514851,7.50143564 L6.6230198,7.50143564 C6.24539604,7.50143564
                         5.93920792,7.80777228 5.93920792,8.18514851 C5.93920792,8.56306931

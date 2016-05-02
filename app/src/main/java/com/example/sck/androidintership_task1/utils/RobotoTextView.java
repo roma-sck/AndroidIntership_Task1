@@ -7,21 +7,16 @@ import android.widget.TextView;
 
 public class RobotoTextView extends TextView {
 
-    Context mContext;
-
     public RobotoTextView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        mContext = context;
     }
 
     public RobotoTextView(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        mContext = context;
+        this(context, attrs, 0);
     }
 
     public RobotoTextView(Context context) {
-        super(context);
-        mContext = context;
+        this(context, null, 0);
     }
 
     public void setTypeface(Typeface tf, int style) {

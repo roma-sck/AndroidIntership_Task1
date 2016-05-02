@@ -16,7 +16,6 @@ import com.example.sck.androidintership_task1.adapters.ImagesRecyclerAdapter;
 import com.example.sck.androidintership_task1.R;
 
 public class DetailActivity extends AppCompatActivity implements View.OnClickListener {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,13 +24,10 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         setTitle(getString(R.string.toolbar_title));
 
         initToolbar();
-
         initRecyclerView();
 
         ViewGroup allContent = (ScrollView) findViewById(R.id.content);
         setOnClickAllViews(allContent);
-
-
         // get text sent from Fragment
         Bundle bundle = this.getIntent().getExtras();
         String text = bundle.getString(getString(R.string.intent_to_detail_extra_name));
@@ -46,11 +42,9 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
     private void initToolbar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
-
         assert toolbar != null;
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,12 +70,9 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void setOnClickAllViews(ViewGroup viewGroup) {
-
         int childCount = viewGroup.getChildCount();
-
         for (int i = 0; i < childCount; i++) {
             View view = viewGroup.getChildAt(i);
-
             if (view instanceof ViewGroup) {
                 // if ViewGroup - finding inside
                 setOnClickAllViews((ViewGroup) view);
