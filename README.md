@@ -1,3 +1,49 @@
+# Android Intership Task3
+
+1. Please use code from 1 and 2 task, and create Client-Server Application. For API request use Retrofit 2.0 from Square. Will be a BIG plus, if you will use RxJava.  
+2. You should store whole data in database. It can be realm, native SQL, or sqlbrite. Here you can also use RxJava.
+3. When user presses “Enter to the account” please make Facebook login. (with Facebook SDK). You should save profile into db, and save access_token. Also please make simple profile screen with user name and user photos.
+4. Please use Butterknife or DataBinding.
+Note: Use Butterknife only for views binding or view clicks
+5. Please implement MVP architechture into your Application
+[Here](https://codelabs.developers.google.com/codelabs/android-testing/index.html?index=../../babbq-2015&viewga=+UA-68632703-1#4) you can read about MVP 
+6. Implement recycler view into third tab.
+
+API doc
+	
+Request:
+	
+http://dev-contact.yalantis.com/rest/v1/tickets	
+	
+Also we have here following statuses
+	
+   IN_PROGRESS  -  state=“0,9,5,7,8”
+   DONE - state=”10,6”
+   PENDING - state=”1,3,4”
+
+Example:
+http://dev-contact.yalantis.com/rest/v1/tickets?state=0,9,5,7,8
+
+
+Requirments: 
+- Put dimens and text sizes into res folder. 
+- Don’t use hardcode
+- Use google code style !!!!!
+- Load data from this api
+- On list item click, open first task screen
+- Minimal SDK version = 16
+- Only portrait orientation
+
+Please don’t commit .idea directory. Use master branch as default. 
+Projects that does not use at least one of requirments listed above, will not be checked.
+
+Good luck!)
+
+_________________________________________________________________
+_________________________________________________________________
+_________________________________________________________________
+
+
 # Android Intership Task2
 
 
