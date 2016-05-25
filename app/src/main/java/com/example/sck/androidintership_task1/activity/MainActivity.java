@@ -17,7 +17,6 @@ import android.view.View;
 
 import com.example.sck.androidintership_task1.R;
 import com.example.sck.androidintership_task1.adapters.MainPagerAdapter;
-import com.example.sck.androidintership_task1.fragments.FragmentListView;
 import com.example.sck.androidintership_task1.fragments.FragmentRecyclerList;
 import com.example.sck.androidintership_task1.model.ListItemModel;
 import com.example.sck.androidintership_task1.model.DataModel;
@@ -100,7 +99,7 @@ public class MainActivity extends AppCompatActivity
         MainPagerAdapter pagerAdapter = new MainPagerAdapter(getSupportFragmentManager());
         pagerAdapter.addFragment(FragmentRecyclerList.getInstance(mDataModel), getString(R.string.appeals_tab_inWork));
         pagerAdapter.addFragment(FragmentRecyclerList.getInstance(mDataModel), getString(R.string.appeals_tab_done));
-        pagerAdapter.addFragment(FragmentListView.getInstance(mDataModel), getString(R.string.appeals_tab_notDone));
+        pagerAdapter.addFragment(FragmentRecyclerList.getInstance(mDataModel), getString(R.string.appeals_tab_notDone));
         viewPager.setAdapter(pagerAdapter);
         // set Tabs inside ToolbarLayout
         TabLayout tabs = (TabLayout) findViewById(R.id.tabs);
