@@ -39,7 +39,7 @@
         <item>"Питання стосовно нарахування боргу електрое..."</item>
     </string-array>
 
-    <string name="toolbar_title">Звернення № СЕ-1257218</string>
+    <string name="detail_toolbar_title">Звернення № СЕ-1257218</string>
 
     <string name="detail_text_branch">Комунальне господарство</string>
     <string name="detail_text_status">В роботі</string>
@@ -54,14 +54,5 @@
     <string name="detail_text_description">"У Дніпропетровську дуже багато відкритих люків, тому зараз ми не змінюємо старі залізні люки на нові, а закриваємо ті, які відкриті."</string>
 
     <string name="toast_text">"RecyclerView's зображення №"</string>
-
-    <string-array name="image_urls">
-        <item>cat_01.jpg</item>
-        <item>cat_02.jpg</item>
-        <item>cat_03.jpg</item>
-        <item>cat_04.jpg</item>
-        <item>cat_05.jpg</item>
-        <item>cat_06.jpg</item>
-    </string-array>
 
 </resources>

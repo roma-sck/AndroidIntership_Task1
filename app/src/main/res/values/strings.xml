@@ -40,7 +40,7 @@
     </string-array>
 
     <!--DetailActivity strings-->
-    <string name="toolbar_title">Appeal № СЕ-1257218</string>
+    <string name="detail_toolbar_title">Appeal № СЕ-1257218</string>
 
     <string name="detail_text_branch">Municipal economy</string>
     <string name="detail_text_status">In work</string>
@@ -56,7 +56,7 @@
 
     <string name="toast_text">"RecyclerView's image №"</string>
 
-    <string-array name="image_urls">
+    <string-array name="image_urls" translatable="false">
         <item>cat_01.jpg</item>
         <item>cat_02.jpg</item>
         <item>cat_03.jpg</item>
@@ -64,5 +64,23 @@
         <item>cat_05.jpg</item>
         <item>cat_06.jpg</item>
     </string-array>
+
+    <!--FacebookProfileActivity strings-->
+    <string name="facebook_app_id" translatable="false">1060488370699379</string>
+    <string name="facebook_profile_pic_url" translatable="false">https://graph.facebook.com/</string>
+    <string name="facebook_profile_pic_type" translatable="false">/picture?type=large</string>
+    <string name="facebook_login_text" translatable="false">Login With Facebook</string>
+    <string name="facebook_logout_text" translatable="false">Logout from Facebook</string>
+
+    <string name="facebook_read_permission_public_profile" translatable="false">public_profile</string>
+    <string name="facebook_read_permission_email" translatable="false">email</string>
+    <string name="facebook_read_permission_user_friends" translatable="false">user_friends</string>
+
+    <string name="facebook_request_parameters_name" translatable="false">fields</string>
+    <string name="facebook_request_parameters" translatable="false">"id, name, email, gender"</string>
+
+    <string name="fb_user_field_name" translatable="false">name</string>
+    <string name="fb_user_field_email" translatable="false">email</string>
+    <string name="fb_user_field_id" translatable="false">id</string>
 
 </resources>

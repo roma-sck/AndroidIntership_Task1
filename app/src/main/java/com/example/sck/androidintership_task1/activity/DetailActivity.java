@@ -21,7 +21,7 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        setTitle(getString(R.string.toolbar_title));
+        setTitle(getString(R.string.detail_toolbar_title));
 
         initToolbar();
         initRecyclerView();

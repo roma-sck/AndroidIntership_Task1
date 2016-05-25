@@ -1,5 +1,6 @@
 package com.example.sck.androidintership_task1.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -143,10 +144,10 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
         if (id == R.id.nav_all_appeals) {
             // do something
-        } else if (id == R.id.nav_appeals_on_map) {
+        } if (id == R.id.nav_appeals_on_map) {
             // do something
-        } else if (id == R.id.nav_sing_in) {
-            // do something
+        } if (id == R.id.nav_sing_in) {
+            this.startActivity(new Intent(this, FacebookLoginActivity.class));
         }
         mDrawer.closeDrawer(GravityCompat.START);
         return true;
