@@ -53,7 +53,7 @@ public class RecyclerListAdapter extends RecyclerView.Adapter<RecyclerListAdapte
      */
     @Override
     public void onBindViewHolder(RecyclerAdapterHolder holder, int position) {
-        holder.mImage.setImageResource(mList.get(position).getImage());
+        holder.mImage.setImageResource(R.mipmap.ic_doc);
         holder.mLikeCount.setText(mList.get(position).getLikeCount());
         holder.mTitle.setText(mList.get(position).getTitle());
         holder.mAddress.setText(mList.get(position).getAddress());
