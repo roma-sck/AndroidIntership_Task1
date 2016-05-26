@@ -18,8 +18,8 @@ import android.view.View;
 import com.example.sck.androidintership_task1.R;
 import com.example.sck.androidintership_task1.adapters.MainPagerAdapter;
 import com.example.sck.androidintership_task1.fragments.FragmentRecyclerList;
-import com.example.sck.androidintership_task1.model.ListItemModel;
-import com.example.sck.androidintership_task1.model.DataModel;
+import com.example.sck.androidintership_task1.models.temp.ListItemModel;
+import com.example.sck.androidintership_task1.models.temp.DataModel;
 
 import java.util.ArrayList;
 import java.util.List;

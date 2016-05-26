@@ -1,4 +1,4 @@
-package com.example.sck.androidintership_task1.model;
+package com.example.sck.androidintership_task1.models;
 
 public class FacebookUserModel {
     private String mName;

@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.sck.androidintership_task1.model.FacebookUserModel;
+import com.example.sck.androidintership_task1.models.FacebookUserModel;
 import com.example.sck.androidintership_task1.R;
 import com.example.sck.androidintership_task1.utils.SharedPrefUtils;
 import com.facebook.login.LoginManager;

@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'realm-android'
 
 android {
     compileSdkVersion 23
@@ -29,11 +30,17 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:23.4.0'
 
     compile 'com.squareup.picasso:picasso:2.5.2'
-    compile 'com.facebook.android:facebook-android-sdk:4.12.0'
 
+    compile 'com.facebook.android:facebook-android-sdk:4.12.0'
+    // retrofit
+    compile 'com.squareup.retrofit2:retrofit:2.0.2'
+    compile 'com.squareup.retrofit2:converter-gson:2.0.2'
+    // rx
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.0.2'
+    compile 'io.reactivex:rxandroid:1.2.0'
     // butterknife
     compile 'com.jakewharton:butterknife:8.0.1'
     apt 'com.jakewharton:butterknife-compiler:8.0.1'
-
-    compile 'com.google.code.gson:gson:2.4'
+    // realm
+    compile 'io.realm:android-adapters:1.2.1'
 }

@@ -2,7 +2,7 @@ package com.example.sck.androidintership_task1.utils;
 
 import android.content.Context;
 
-import com.example.sck.androidintership_task1.model.FacebookUserModel;
+import com.example.sck.androidintership_task1.models.FacebookUserModel;
 
 /**
  * save facebook account data to shared preferences

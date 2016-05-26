@@ -1,4 +1,4 @@
-package com.example.sck.androidintership_task1.model;
+package com.example.sck.androidintership_task1.models.temp;
 
 import android.os.Parcel;
 import android.os.Parcelable;
