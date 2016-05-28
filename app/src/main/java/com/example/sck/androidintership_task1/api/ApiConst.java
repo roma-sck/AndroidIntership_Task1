@@ -7,6 +7,6 @@ public class ApiConst {
     public static final String STATE_IN_DONE = "10,6";
     public static final String STATE_IN_PENDING = "1,3,4";
 
-    public static final int TICKETS_AMOUNT = 20;
+    public static final int TICKETS_AMOUNT = 10;
     public static final int TICKETS_OFFSET = 0;
 }

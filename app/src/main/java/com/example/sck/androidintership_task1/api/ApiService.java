@@ -4,6 +4,7 @@ import com.example.sck.androidintership_task1.models.IssueDataModel;
 
 import java.util.List;
 
+import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 import rx.Observable;
@@ -17,4 +18,9 @@ public interface ApiService {
     Observable<List<IssueDataModel>> loadDataRx(@Query("state") String state,
                                                 @Query("amount") int amount,
                                                 @Query("offset") int offcet);
+
+    @GET("tickets")
+    Call<List<IssueDataModel>> loadData(@Query("state") String state,
+                                          @Query("amount") int amount,
+                                          @Query("offset") int offcet);
 }
