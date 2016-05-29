@@ -6,41 +6,30 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.sck.androidintership_task1.App;
 import com.example.sck.androidintership_task1.R;
 import com.example.sck.androidintership_task1.activity.DetailActivity;
 import com.example.sck.androidintership_task1.adapters.RealmRecyclerAdapter;
-import com.example.sck.androidintership_task1.adapters.RecyclerListAdapter;
 import com.example.sck.androidintership_task1.api.ApiConst;
 import com.example.sck.androidintership_task1.api.ApiController;
 import com.example.sck.androidintership_task1.api.ApiService;
 import com.example.sck.androidintership_task1.models.IssueDataModel;
-import com.example.sck.androidintership_task1.models.temp.ListItemModel;
-import com.example.sck.androidintership_task1.models.temp.DataModel;
 import com.example.sck.androidintership_task1.utils.RecyclerItemClickListener;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 import io.realm.RealmResults;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 public class FragmentRecyclerList extends Fragment {
-
-    private static final String LOG_TAG = FragmentRecyclerList.class.getSimpleName();
     private static final String RECYCLER_KEY = "recycler_key";
     private ApiService mApiService;
     private RecyclerView mRecyclerView;
@@ -103,12 +92,10 @@ public class FragmentRecyclerList extends Fragment {
                     @Override
                     public void onCompleted() {
                     }
-
                     @Override
                     public void onError(Throwable e) {
                         e.printStackTrace();
                     }
-
                     @Override
                     public void onNext(List<IssueDataModel> issues) {
                         Realm realm = Realm.getDefaultInstance();
