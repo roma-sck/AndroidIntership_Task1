@@ -28,7 +28,10 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout mDrawer;
-    private DataModel mDataModel;
+//    private DataModel mDataModel;
+    public static final int TAB_ONE = 0;
+    public static final int TAB_TWO = 1;
+    public static final int TAB_THREE = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +48,7 @@ public class MainActivity extends AppCompatActivity
             }
         });
         setUpDrawer();
-        fillModelWithData();
+//        fillModelWithData();
         setUpViewPager();
     }
 
@@ -71,25 +74,6 @@ public class MainActivity extends AppCompatActivity
     }
 
     /**
-     * Create a Data model
-     * fill model with some data
-     */
-    public void fillModelWithData() {
-        List<ListItemModel> data = new ArrayList<>();
-        int groupIc = R.drawable.ic_trash;
-        String likeCount = getString(R.string.list_item_data_like_count);
-        String address = getString(R.string.list_item_data_address);
-        String date = getString(R.string.list_item_data_date);
-        String daysLeft = getString(R.string.list_item_data_days_left);
-        String[] titles = getResources().getStringArray(R.array.list_item_data_appeals_title);
-        for(int i = 0; i < 10; i++) {
-            // add new instance of ListItemModel class with data to list
-            data.add(new ListItemModel(groupIc, likeCount, titles[i], address, date, daysLeft));
-        }
-        mDataModel = new DataModel(data);
-    }
-
-    /**
      * setting ViewPager for each Tabs
      *
      */
@@ -97,9 +81,9 @@ public class MainActivity extends AppCompatActivity
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
         // add Fragments to Tabs, transfer model with data
         MainPagerAdapter pagerAdapter = new MainPagerAdapter(getSupportFragmentManager());
-        pagerAdapter.addFragment(FragmentRecyclerList.getInstance(mDataModel), getString(R.string.appeals_tab_inWork));
-        pagerAdapter.addFragment(FragmentRecyclerList.getInstance(mDataModel), getString(R.string.appeals_tab_done));
-        pagerAdapter.addFragment(FragmentRecyclerList.getInstance(mDataModel), getString(R.string.appeals_tab_notDone));
+        pagerAdapter.addFragment(FragmentRecyclerList.getInstance(TAB_ONE), getString(R.string.appeals_tab_inWork));
+        pagerAdapter.addFragment(FragmentRecyclerList.getInstance(TAB_TWO), getString(R.string.appeals_tab_done));
+        pagerAdapter.addFragment(FragmentRecyclerList.getInstance(TAB_THREE), getString(R.string.appeals_tab_notDone));
         viewPager.setAdapter(pagerAdapter);
         // set Tabs inside ToolbarLayout
         TabLayout tabs = (TabLayout) findViewById(R.id.tabs);
