@@ -2,6 +2,7 @@ package com.example.sck.androidintership_task1.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.sck.androidintership_task1.R;
 import com.example.sck.androidintership_task1.models.IssueDataModel;
+import com.example.sck.androidintership_task1.utils.DateConverter;
 
 import io.realm.OrderedRealmCollection;
 import io.realm.RealmRecyclerViewAdapter;
@@ -34,7 +36,7 @@ public class RealmRecyclerAdapter extends RealmRecyclerViewAdapter<IssueDataMode
      */
     @Override
     public RealmRecyclerAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_row, parent, false);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.list_item_row, parent, false);
         return new ViewHolder(view);
     }
 
@@ -48,27 +50,17 @@ public class RealmRecyclerAdapter extends RealmRecyclerViewAdapter<IssueDataMode
     @Override
     public void onBindViewHolder(RealmRecyclerAdapter.ViewHolder holder, int position) {
         IssueDataModel dataModel = getData().get(position);
-//        holder.mImage.setImageResource(R.mipmap.ic_doc);
-//        holder.mLikeCount.setText(dataModel.getLikesCounter());
-//        holder.mTitle.setText(dataModel.getTitle());
-//        String streetType = dataModel.getUser().getAddress().getStreet().getStreetType().getShortName();
-//        String streetName = dataModel.getUser().getAddress().getStreet().getName();
-//        String address = streetType + " " + streetName;
-//        holder.mAddress.setText(address);
-//        holder.mDate.setText(dataModel.getCreatedDate());
-//        int daysLeft = dataModel.getCompletedDate() - dataModel.getStartDate();
-//        holder.mDaysLeft.setText(daysLeft);
-
-//        holder.mImage.setImageResource(R.mipmap.ic_doc);
-        holder.mLikeCount.setText("1");
-        holder.mTitle.setText("Title");
-        String streetType = "вул.";
-        String streetName = "Matlahova";
+        holder.mImage.setImageResource(R.mipmap.ic_doc);
+        holder.mLikeCount.setText(String.valueOf(dataModel.getLikesCounter()));
+        holder.mTitle.setText(dataModel.getTitle());
+        String streetType = dataModel.getUser().getAddress().getStreet().getStreetType().getShortName();
+        String streetName = dataModel.getUser().getAddress().getStreet().getName();
         String address = streetType + " " + streetName;
         holder.mAddress.setText(address);
-        holder.mDate.setText("29 may");
-        int daysLeft = 5 - 2;
-//        holder.mDaysLeft.setText(""+daysLeft);
+        String date = DateConverter.convertDate(dataModel.getCreatedDate()) + "";
+        holder.mDate.setText(date);
+        String daysLeft = DateConverter.getDaysLeft(dataModel.getStartDate());
+        holder.mDaysLeft.setText(daysLeft);
     }
 
     /**

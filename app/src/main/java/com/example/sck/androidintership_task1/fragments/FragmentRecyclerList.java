@@ -42,13 +42,7 @@ public class FragmentRecyclerList extends Fragment {
 
     private static final String LOG_TAG = FragmentRecyclerList.class.getSimpleName();
     private static final String RECYCLER_KEY = "recycler_key";
-    //    private Realm mRealm;
     private ApiService mApiService;
-
-    private List<ListItemModel> mData;
-
-    private List<IssueDataModel> mIssueDataModel;
-    private RealmResults<IssueDataModel> mRealmResults;
     private RecyclerView mRecyclerView;
     private RealmConfiguration mRealmConfig;
 
@@ -66,7 +60,6 @@ public class FragmentRecyclerList extends Fragment {
         Bundle bundle = new Bundle();
         bundle.putInt(RECYCLER_KEY, state);
         fragment.setArguments(bundle);
-
         return fragment;
     }
 
@@ -77,25 +70,17 @@ public class FragmentRecyclerList extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        //------------------------------------------------------------------
         initRealmDb();
         mApiService = ApiController.getApiService();
         loadApiData(ApiConst.STATE_IN_PROGRESS, ApiConst.TICKETS_AMOUNT);
-        //------------------------------------------------------------------
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_recycler_list, container, false);
-
-        initRealmDb();
-        mApiService = ApiController.getApiService();
-        loadApiData(ApiConst.STATE_IN_PROGRESS, ApiConst.TICKETS_AMOUNT);
         setUpRecyclerList(rootView);
         loadDataFromDb();
-
         return rootView;
     }
 
@@ -117,50 +102,30 @@ public class FragmentRecyclerList extends Fragment {
                 .subscribe(new Subscriber<List<IssueDataModel>>() {
                     @Override
                     public void onCompleted() {
-                        Log.i(LOG_TAG, "------------onCompleted----------");
-//                        loadDataFromDb();
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        Log.i(LOG_TAG, "------------onError----------");
                         e.printStackTrace();
-                        Log.i(LOG_TAG, e.getMessage());
                     }
 
                     @Override
                     public void onNext(List<IssueDataModel> issues) {
-                        Log.i(LOG_TAG, "------------onNext----------");
-                        Log.i(LOG_TAG, "--issues.size---" + issues.size());
-                        // add content to the Relam DB
-                        // Open a transaction to store items into the realm
-                        // Use copyToRealm() to convert the objects into proper RealmObjects managed by Realm.
                         Realm realm = Realm.getDefaultInstance();
+                        // add content to the Relam DB
                         realm.beginTransaction();
                         realm.copyToRealmOrUpdate(issues);
-                        Log.i(LOG_TAG, "-----------DATA COPY TO REALM----------");
                         realm.commitTransaction();
-                        Log.i(LOG_TAG, "-----------DATA COMMIT TO REALM----------");
                         realm.close();
-                        Log.i(LOG_TAG, "-----------REALM CLOSE----------");
                     }
                 });
     }
 
     private void loadDataFromDb() {
-        Log.i(LOG_TAG, "-----------loadDataFromDb----------");
         Realm realm = Realm.getDefaultInstance();
         RealmResults<IssueDataModel> results = realm.where(IssueDataModel.class).findAllAsync();
         realm.close();
-        for (int i = 0; i < results.size(); i++) {
-            Log.i(LOG_TAG, "issue1 # " + i + "\n" +
-                    "item(" + i + ") results.get(i).getId() = " + results.get(i).getId() + "\n" +
-                    "item(" + i + ") results.get(i).getTitle() = " + results.get(i).getTitle() + "\n" +
-                    "item(" + i + ") results.get(i).getUser().getLastName() = " + results.get(i).getUser().getLastName() + "\n" +
-                    "item(" + i + ") results.get(i).getUser().getAddress().getStreet().getName() = " + results.get(i).getUser().getAddress().getStreet().getName() + "\n" );
-        }
-        RealmRecyclerAdapter adapter;
-        adapter = new RealmRecyclerAdapter(getContext(), results);
+        RealmRecyclerAdapter adapter = new RealmRecyclerAdapter(getContext(), results);
         mRecyclerView.setAdapter(adapter);
     }
 

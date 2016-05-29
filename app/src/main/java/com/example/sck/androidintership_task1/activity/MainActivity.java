@@ -26,9 +26,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
     private DrawerLayout mDrawer;
-//    private DataModel mDataModel;
     public static final int TAB_ONE = 0;
     public static final int TAB_TWO = 1;
     public static final int TAB_THREE = 2;
@@ -48,7 +46,6 @@ public class MainActivity extends AppCompatActivity
             }
         });
         setUpDrawer();
-//        fillModelWithData();
         setUpViewPager();
     }
 
