@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 
 import com.example.sck.androidintership_task1.R;
 import com.example.sck.androidintership_task1.activity.DetailActivity;
-import com.example.sck.androidintership_task1.activity.MainActivity;
 import com.example.sck.androidintership_task1.adapters.RealmRecyclerAdapter;
 import com.example.sck.androidintership_task1.api.ApiConst;
 import com.example.sck.androidintership_task1.api.ApiController;
@@ -37,6 +36,9 @@ public class FragmentRecyclerList extends Fragment {
 
     @BindView(R.id.appeals_recycler_list) RecyclerView mRecyclerView;
     @BindView(R.id.swipe_to_refresh) SwipeRefreshLayout mSwipeRefreshLayout;
+    public static final int TAB_ONE = 0;
+    public static final int TAB_TWO = 1;
+    public static final int TAB_THREE = 2;
     private static final String RECYCLER_KEY = "recycler_key";
     private ApiService mApiService;
     private RealmConfiguration mRealmConfig;
@@ -68,6 +70,8 @@ public class FragmentRecyclerList extends Fragment {
         initRealmDb();
         mApiService = ApiController.getApiService();
         loadApiData(ApiConst.STATE_IN_PROGRESS, ApiConst.TICKETS_AMOUNT);
+        loadApiData(ApiConst.STATE_IN_DONE, ApiConst.TICKETS_AMOUNT);
+        loadApiData(ApiConst.STATE_IN_PENDING, ApiConst.TICKETS_AMOUNT);
     }
 
     @Override
@@ -132,9 +136,9 @@ public class FragmentRecyclerList extends Fragment {
 
     private String getStateValue(int tabNum) {
         switch (tabNum) {
-            case MainActivity.TAB_ONE : return ApiConst.STATE_IN_PROGRESS_VALUE;
-            case MainActivity.TAB_TWO : return ApiConst.STATE_IN_DONE_VALUE;
-            case MainActivity.TAB_THREE : return ApiConst.STATE_IN_PENDING_VALUE;
+            case TAB_ONE : return ApiConst.STATE_IN_PROGRESS_VALUE;
+            case TAB_TWO : return ApiConst.STATE_IN_DONE_VALUE;
+            case TAB_THREE : return ApiConst.STATE_IN_PENDING_VALUE;
         }
         return null;
     }

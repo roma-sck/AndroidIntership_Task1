@@ -31,9 +31,6 @@ public class MainActivity extends AppCompatActivity
     @BindView(R.id.nav_view) NavigationView mNavigationView;
     @BindView(R.id.viewpager) ViewPager mViewPager;
     @BindView(R.id.tabs) TabLayout mTabs;
-    public static final int TAB_ONE = 0;
-    public static final int TAB_TWO = 1;
-    public static final int TAB_THREE = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,9 +71,9 @@ public class MainActivity extends AppCompatActivity
     private void setUpViewPager() {
         // add Fragments to Tabs, transfer model with data
         MainPagerAdapter pagerAdapter = new MainPagerAdapter(getSupportFragmentManager());
-        pagerAdapter.addFragment(FragmentRecyclerList.getInstance(TAB_ONE), getString(R.string.appeals_tab_inWork));
-        pagerAdapter.addFragment(FragmentRecyclerList.getInstance(TAB_TWO), getString(R.string.appeals_tab_done));
-        pagerAdapter.addFragment(FragmentRecyclerList.getInstance(TAB_THREE), getString(R.string.appeals_tab_notDone));
+        pagerAdapter.addFragment(FragmentRecyclerList.getInstance(FragmentRecyclerList.TAB_ONE), getString(R.string.appeals_tab_inWork));
+        pagerAdapter.addFragment(FragmentRecyclerList.getInstance(FragmentRecyclerList.TAB_TWO), getString(R.string.appeals_tab_done));
+        pagerAdapter.addFragment(FragmentRecyclerList.getInstance(FragmentRecyclerList.TAB_THREE), getString(R.string.appeals_tab_notDone));
         mViewPager.setAdapter(pagerAdapter);
         // set Tabs inside ToolbarLayout
         mTabs.setupWithViewPager(mViewPager);

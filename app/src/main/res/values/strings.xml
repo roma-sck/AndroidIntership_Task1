@@ -22,23 +22,6 @@
     <string name="intent_to_detail_recycler_msg">"from Recycler list _pos: "</string>
     <string name="intent_to_detail_listview_msg">"from ListView list _pos: "</string>
 
-    <string name="list_item_data_like_count">"49"</string>
-    <string name="list_item_data_address">"Вул. Вадима Гетьмана, 42"</string>
-    <string name="list_item_data_date">"Кві 24, 2016"</string>
-    <string name="list_item_data_days_left">"-14 днів"</string>
-    <string-array name="list_item_data_appeals_title">
-        <item>"Демонтаж інших об’єктів, що входять до переліку мал..."</item>
-        <item>"Питання стосовно нарахування боргу електрое..."</item>
-        <item>"Ремонт та обслуговування ліфтів"</item>
-        <item>"Прибирання та санітарній стан території"</item>
-        <item>"Демонтаж інших об’єктів, що входять до переліку мал..."</item>
-        <item>"Питання стосовно нарахування боргу електрое..."</item>
-        <item>"Ремонт та обслуговування ліфтів"</item>
-        <item>"Прибирання та санітарній стан території"</item>
-        <item>"Демонтаж інших об’єктів, що входять до переліку мал..."</item>
-        <item>"Питання стосовно нарахування боргу електрое..."</item>
-    </string-array>
-
     <!--DetailActivity strings-->
     <string name="detail_toolbar_title">Appeal № СЕ-1257218</string>
 
