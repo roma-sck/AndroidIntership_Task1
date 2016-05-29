@@ -5,11 +5,19 @@
     android:layout_height="match_parent"
     tools:context=".fragments.FragmentRecyclerList">
 
-    <android.support.v7.widget.RecyclerView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/appeals_recycler_list"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_to_refresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/recyclerview_margin_top" />
+        android:layout_marginTop="@dimen/recyclerview_margin_top" >
+
+        <android.support.v7.widget.RecyclerView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/appeals_recycler_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/recyclerview_margin_top" />
+
+    </android.support.v4.widget.SwipeRefreshLayout>
 
 </RelativeLayout>

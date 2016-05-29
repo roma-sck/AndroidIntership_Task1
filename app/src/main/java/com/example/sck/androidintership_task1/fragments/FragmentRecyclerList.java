@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -34,6 +35,7 @@ import rx.schedulers.Schedulers;
 public class FragmentRecyclerList extends Fragment {
 
     @BindView(R.id.appeals_recycler_list) RecyclerView mRecyclerView;
+    @BindView(R.id.swipe_to_refresh) SwipeRefreshLayout mSwipeRefreshLayout;
     private static final String RECYCLER_KEY = "recycler_key";
     private ApiService mApiService;
     private RealmConfiguration mRealmConfig;
@@ -74,6 +76,7 @@ public class FragmentRecyclerList extends Fragment {
         ButterKnife.bind(this, rootView);
         setUpRecyclerList();
         loadDataFromDb();
+        initSwipeToRefresh();
         return rootView;
     }
 
@@ -126,6 +129,15 @@ public class FragmentRecyclerList extends Fragment {
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(),
                 new OnRecyclerItemClickListener()));
+    }
+
+    private void initSwipeToRefresh() {
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                mSwipeRefreshLayout.setRefreshing(false);
+            }
+        });
     }
 
     private class OnRecyclerItemClickListener extends RecyclerItemClickListener.SimpleOnItemClickListener {
