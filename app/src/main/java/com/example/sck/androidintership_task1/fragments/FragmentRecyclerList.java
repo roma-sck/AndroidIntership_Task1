@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 
 import com.example.sck.androidintership_task1.R;
 import com.example.sck.androidintership_task1.activity.DetailActivity;
+import com.example.sck.androidintership_task1.activity.MainActivity;
 import com.example.sck.androidintership_task1.adapters.RealmRecyclerAdapter;
 import com.example.sck.androidintership_task1.api.ApiConst;
 import com.example.sck.androidintership_task1.api.ApiController;
@@ -82,7 +83,8 @@ public class FragmentRecyclerList extends Fragment {
 
     private void initRealmDb() {
         if (mRealmConfig == null) {
-            mRealmConfig = new RealmConfiguration.Builder(this.getActivity().getApplication().getApplicationContext())
+            mRealmConfig = new RealmConfiguration
+                    .Builder(this.getActivity().getApplication().getApplicationContext())
                     .deleteRealmIfMigrationNeeded()
                     .build();
             Realm.setDefaultConfiguration(mRealmConfig);
@@ -116,11 +118,25 @@ public class FragmentRecyclerList extends Fragment {
     }
 
     private void loadDataFromDb() {
+        String stateValue = getStateValue(getTabNum());
         Realm realm = Realm.getDefaultInstance();
-        RealmResults<IssueDataModel> results = realm.where(IssueDataModel.class).findAllAsync();
+//        RealmResults<IssueDataModel> results = realm.where(IssueDataModel.class).findAllAsync();
+        RealmResults<IssueDataModel> results;
+        results = realm.where(IssueDataModel.class)
+                .equalTo(ApiConst.STATE_FIELD_NAME, stateValue)
+                .findAllAsync();
         realm.close();
         RealmRecyclerAdapter adapter = new RealmRecyclerAdapter(getContext(), results);
         mRecyclerView.setAdapter(adapter);
+    }
+
+    private String getStateValue(int tabNum) {
+        switch (tabNum) {
+            case MainActivity.TAB_ONE : return ApiConst.STATE_IN_PROGRESS_VALUE;
+            case MainActivity.TAB_TWO : return ApiConst.STATE_IN_DONE_VALUE;
+            case MainActivity.TAB_THREE : return ApiConst.STATE_IN_PENDING_VALUE;
+        }
+        return null;
     }
 
     private void setUpRecyclerList() {
