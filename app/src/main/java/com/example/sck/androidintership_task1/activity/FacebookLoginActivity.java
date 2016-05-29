@@ -31,6 +31,7 @@ public class FacebookLoginActivity extends Activity {
     @BindView (R.id.facebook_login_button) LoginButton mLoginButton;
     private CallbackManager mCallbackManager;
     private FacebookUserModel mUser;
+    private String mToken;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +60,7 @@ public class FacebookLoginActivity extends Activity {
                 mLoginButton.setVisibility(View.INVISIBLE);
             }
         });
+        mCustomLoginBtn.setVisibility(View.INVISIBLE);
     }
 
     @Override
@@ -70,6 +72,7 @@ public class FacebookLoginActivity extends Activity {
     private FacebookCallback<LoginResult> mCallBack = new FacebookCallback<LoginResult>() {
         @Override
         public void onSuccess(LoginResult loginResult) {
+            mToken = loginResult.getAccessToken().getToken();
             GraphRequest request = GraphRequest.newMeRequest(loginResult.getAccessToken(),
                     new GraphRequest.GraphJSONObjectCallback() {
                         @Override
@@ -78,7 +81,7 @@ public class FacebookLoginActivity extends Activity {
                                 mUser = new FacebookUserModel(
                                         obj.getString(getString(R.string.fb_user_field_name)),
                                         obj.getString(getString(R.string.fb_user_field_email)),
-                                        obj.getString(getString(R.string.fb_user_field_id)) );
+                                        obj.getString(getString(R.string.fb_user_field_id)));
                                 SharedPrefUtils.setCurrentUser(mUser, FacebookLoginActivity.this);
                             }catch (Exception e){
                                 e.printStackTrace();

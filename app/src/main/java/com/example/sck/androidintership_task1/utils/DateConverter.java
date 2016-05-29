@@ -26,7 +26,7 @@ public class DateConverter {
 
     public static String getDaysLeft(long startDateInSeconds) {
         long dateInSecNow = new Date().getTime()/SEC_TO_MILLIS_COEFFICIENT;
-        long daysLeft = TimeUnit.SECONDS.toDays(startDateInSeconds - dateInSecNow);
+        long daysLeft = TimeUnit.SECONDS.toDays(dateInSecNow - startDateInSeconds);
         String result;
         if (daysLeft == 1) {
             result = daysLeft + ONE_DAY_TEXT;
