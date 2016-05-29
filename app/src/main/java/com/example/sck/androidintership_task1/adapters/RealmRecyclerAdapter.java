@@ -2,7 +2,6 @@ package com.example.sck.androidintership_task1.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,7 +56,7 @@ public class RealmRecyclerAdapter extends RealmRecyclerViewAdapter<IssueDataMode
         String streetName = dataModel.getUser().getAddress().getStreet().getName();
         String address = streetType + " " + streetName;
         holder.mAddress.setText(address);
-        String date = DateConverter.convertDate(dataModel.getCreatedDate()) + "";
+        String date = DateConverter.convertDate(dataModel.getCreatedDate());
         holder.mDate.setText(date);
         String daysLeft = DateConverter.getDaysLeft(dataModel.getStartDate());
         holder.mDaysLeft.setText(daysLeft);
