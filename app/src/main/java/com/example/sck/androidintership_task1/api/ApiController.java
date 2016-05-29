@@ -14,9 +14,6 @@ public class ApiController {
 
     // create a converter compatible with Realm
     // GSON can parse the data.
-    // Note there is a bug in GSON 2.5 that can cause it to StackOverflow when working with RealmObjects.
-    // To work around this, use the ExclusionStrategy below or downgrade to 1.7.1
-    // See more here: https://code.google.com/p/google-gson/issues/detail?id=440
     private static final Gson gson = new GsonBuilder()
             .setExclusionStrategies(new ExclusionStrategy() {
                 @Override

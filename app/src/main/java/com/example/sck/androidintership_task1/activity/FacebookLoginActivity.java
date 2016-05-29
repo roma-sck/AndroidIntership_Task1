@@ -28,8 +28,8 @@ import butterknife.ButterKnife;
 public class FacebookLoginActivity extends Activity {
 
     @BindView (R.id.login_btn) TextView mCustomLoginBtn;
+    @BindView (R.id.facebook_login_button) LoginButton mLoginButton;
     private CallbackManager mCallbackManager;
-    private LoginButton mLoginButton;
     private FacebookUserModel mUser;
 
     @Override
@@ -48,7 +48,6 @@ public class FacebookLoginActivity extends Activity {
     protected void onResume() {
         super.onResume();
         mCallbackManager = CallbackManager.Factory.create();
-        mLoginButton = (LoginButton)findViewById(R.id.facebook_login_button);
         mLoginButton.setReadPermissions(getString(R.string.facebook_read_permission_public_profile), getString(R.string.facebook_read_permission_email), getString(R.string.facebook_read_permission_user_friends));
         mCustomLoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override

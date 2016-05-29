@@ -18,15 +18,19 @@ import android.view.View;
 import com.example.sck.androidintership_task1.R;
 import com.example.sck.androidintership_task1.adapters.MainPagerAdapter;
 import com.example.sck.androidintership_task1.fragments.FragmentRecyclerList;
-import com.example.sck.androidintership_task1.models.temp.ListItemModel;
-import com.example.sck.androidintership_task1.models.temp.DataModel;
 
-import java.util.ArrayList;
-import java.util.List;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    private DrawerLayout mDrawer;
+
+    @BindView(R.id.action_button) FloatingActionButton mActionButton;
+    @BindView(R.id.toolbar) Toolbar mToolbar;
+    @BindView(R.id.drawer_layout) DrawerLayout mDrawer;
+    @BindView(R.id.nav_view) NavigationView mNavigationView;
+    @BindView(R.id.viewpager) ViewPager mViewPager;
+    @BindView(R.id.tabs) TabLayout mTabs;
     public static final int TAB_ONE = 0;
     public static final int TAB_TWO = 1;
     public static final int TAB_THREE = 2;
@@ -36,16 +40,16 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setTitle(getString(R.string.all_appeals_text));
+        ButterKnife.bind(this);
 
         setUpToolbar();
-        FloatingActionButton actionButton = (FloatingActionButton) findViewById(R.id.action_button);
-        actionButton.setOnClickListener(new View.OnClickListener() {
+        mActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // do something
             }
         });
-        setUpDrawer();
+        mNavigationView.setNavigationItemSelectedListener(this);
         setUpViewPager();
     }
 
@@ -54,9 +58,8 @@ public class MainActivity extends AppCompatActivity
      * sets the Toolbar to act as the ActionBar for this Activity window.
      */
     private void setUpToolbar() {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        ActionBar actionbar = getSupportActionBar ();
+        setSupportActionBar(mToolbar);
+        ActionBar actionbar = getSupportActionBar();
         if(actionbar != null) {
             // custom home indicator icon
             actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
@@ -64,27 +67,19 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    private void setUpDrawer() {
-        mDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
-    }
-
     /**
      * setting ViewPager for each Tabs
      *
      */
     private void setUpViewPager() {
-        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
         // add Fragments to Tabs, transfer model with data
         MainPagerAdapter pagerAdapter = new MainPagerAdapter(getSupportFragmentManager());
         pagerAdapter.addFragment(FragmentRecyclerList.getInstance(TAB_ONE), getString(R.string.appeals_tab_inWork));
         pagerAdapter.addFragment(FragmentRecyclerList.getInstance(TAB_TWO), getString(R.string.appeals_tab_done));
         pagerAdapter.addFragment(FragmentRecyclerList.getInstance(TAB_THREE), getString(R.string.appeals_tab_notDone));
-        viewPager.setAdapter(pagerAdapter);
+        mViewPager.setAdapter(pagerAdapter);
         // set Tabs inside ToolbarLayout
-        TabLayout tabs = (TabLayout) findViewById(R.id.tabs);
-        tabs.setupWithViewPager(viewPager);
+        mTabs.setupWithViewPager(mViewPager);
     }
 
     @Override

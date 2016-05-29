@@ -15,8 +15,8 @@ import rx.Observable;
 public interface ApiService {
 
     @GET("tickets")
-    Observable<List<IssueDataModel>> loadDataRx(@Query("state") String state,
-                                                @Query("amount") int amount);
+    Observable<List<IssueDataModel>> loadData(@Query("state") String state,
+                                              @Query("amount") int amount);
 
     @GET("tickets")
     Call<List<IssueDataModel>> loadData(@Query("state") String state,

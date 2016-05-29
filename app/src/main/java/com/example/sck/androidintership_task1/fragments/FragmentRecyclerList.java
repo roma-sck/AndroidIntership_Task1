@@ -21,6 +21,8 @@ import com.example.sck.androidintership_task1.utils.RecyclerItemClickListener;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 import io.realm.RealmResults;
@@ -30,9 +32,10 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 public class FragmentRecyclerList extends Fragment {
+
+    @BindView(R.id.appeals_recycler_list) RecyclerView mRecyclerView;
     private static final String RECYCLER_KEY = "recycler_key";
     private ApiService mApiService;
-    private RecyclerView mRecyclerView;
     private RealmConfiguration mRealmConfig;
 
     public FragmentRecyclerList() {
@@ -68,7 +71,8 @@ public class FragmentRecyclerList extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_recycler_list, container, false);
-        setUpRecyclerList(rootView);
+        ButterKnife.bind(this, rootView);
+        setUpRecyclerList();
         loadDataFromDb();
         return rootView;
     }
@@ -84,7 +88,7 @@ public class FragmentRecyclerList extends Fragment {
     }
 
     private void loadApiData(String state, int amount) {
-        Observable<List<IssueDataModel>> observable = mApiService.loadDataRx(state, amount);
+        Observable<List<IssueDataModel>> observable = mApiService.loadData(state, amount);
         observable
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -116,8 +120,7 @@ public class FragmentRecyclerList extends Fragment {
         mRecyclerView.setAdapter(adapter);
     }
 
-    private void setUpRecyclerList(View rootView) {
-        mRecyclerView = (RecyclerView) rootView.findViewById(R.id.appeals_recycler_list);
+    private void setUpRecyclerList() {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity(),
                 LinearLayoutManager.VERTICAL, false);
         mRecyclerView.setLayoutManager(layoutManager);

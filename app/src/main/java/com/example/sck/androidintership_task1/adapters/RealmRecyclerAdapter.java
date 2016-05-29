@@ -12,6 +12,8 @@ import com.example.sck.androidintership_task1.R;
 import com.example.sck.androidintership_task1.models.IssueDataModel;
 import com.example.sck.androidintership_task1.utils.DateConverter;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import io.realm.OrderedRealmCollection;
 import io.realm.RealmRecyclerViewAdapter;
 
@@ -66,21 +68,16 @@ public class RealmRecyclerAdapter extends RealmRecyclerViewAdapter<IssueDataMode
      * ViewHolder class
      */
     class ViewHolder extends RecyclerView.ViewHolder {
-        private ImageView mImage;
-        private TextView mLikeCount;
-        private TextView mTitle;
-        private TextView mAddress;
-        private TextView mDate;
-        private TextView mDaysLeft;
+        @BindView(R.id.image) ImageView mImage;
+        @BindView(R.id.like_count) TextView mLikeCount;
+        @BindView(R.id.title) TextView mTitle;
+        @BindView(R.id.address) TextView mAddress;
+        @BindView(R.id.date) TextView mDate;
+        @BindView(R.id.daysLeft) TextView mDaysLeft;
 
         ViewHolder(View itemView) {
             super(itemView);
-            mImage = (ImageView) itemView.findViewById(R.id.image);
-            mLikeCount = (TextView) itemView.findViewById(R.id.like_count);
-            mTitle = (TextView) itemView.findViewById(R.id.title);
-            mAddress = (TextView) itemView.findViewById(R.id.address);
-            mDate = (TextView) itemView.findViewById(R.id.date);
-            mDaysLeft = (TextView) itemView.findViewById(R.id.daysLeft);
+            ButterKnife.bind(this, itemView);
         }
     }
 }

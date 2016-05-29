@@ -15,23 +15,28 @@ import android.widget.Toast;
 import com.example.sck.androidintership_task1.adapters.ImagesRecyclerAdapter;
 import com.example.sck.androidintership_task1.R;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class DetailActivity extends AppCompatActivity implements View.OnClickListener {
+    @BindView(R.id.toolbar) Toolbar mToolbar;
+    @BindView(R.id.content) ViewGroup mAllContent;
+    @BindView(R.id.recycler_view) RecyclerView mRecyclerView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
-
-        setTitle(getString(R.string.detail_toolbar_title));
-
-        initToolbar();
-        initRecyclerView();
-
-        ViewGroup allContent = (ScrollView) findViewById(R.id.content);
-        setOnClickAllViews(allContent);
+        ButterKnife.bind(this);
         // get text sent from Fragment
         Bundle bundle = this.getIntent().getExtras();
         String text = bundle.getString(getString(R.string.intent_to_detail_extra_name));
         Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
+
+        setTitle(getString(R.string.detail_toolbar_title));
+        initToolbar();
+        initRecyclerView();
+        setOnClickAllViews(mAllContent);
     }
 
     /**
@@ -40,13 +45,12 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
      * make sure the toolbar exists in the activity and is not null, add backbutton onClick
      */
     private void initToolbar() {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        setSupportActionBar(mToolbar);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
-        assert toolbar != null;
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+        assert mToolbar != null;
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onBackPressed();
@@ -58,15 +62,12 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
      * find RecyclerView, set display downloaded images in a horizontal scrollable list
      */
     private void initRecyclerView() {
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        recyclerView.setHasFixedSize(true);
-
+        mRecyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this,
                 LinearLayoutManager.HORIZONTAL, false);
-        recyclerView.setLayoutManager(layoutManager);
-
+        mRecyclerView.setLayoutManager(layoutManager);
         ImagesRecyclerAdapter adapter = new ImagesRecyclerAdapter(this, getResources().getStringArray(R.array.image_urls));
-        recyclerView.setAdapter(adapter);
+        mRecyclerView.setAdapter(adapter);
     }
 
     private void setOnClickAllViews(ViewGroup viewGroup) {
