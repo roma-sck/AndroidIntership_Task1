@@ -9,14 +9,17 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.sck.androidintership_task1.R;
+import com.example.sck.androidintership_task1.api.ApiConst;
+import com.example.sck.androidintership_task1.models.File;
 import com.squareup.picasso.Picasso;
+
+import java.util.List;
 
 public class ImagesRecyclerAdapter extends RecyclerView.Adapter<ImagesRecyclerAdapter.ImageViewHolder> {
     private Context mContext;
-    private String[] mDataSet;
-    private static final String ASSETS_URL = "file:///android_asset/images/";
+    private List<File> mDataSet;
 
-    public ImagesRecyclerAdapter(Context context, String[] dataSet) {
+    public ImagesRecyclerAdapter(Context context, List<File> dataSet) {
         mContext = context;
         mDataSet = dataSet;
     }
@@ -43,14 +46,19 @@ public class ImagesRecyclerAdapter extends RecyclerView.Adapter<ImagesRecyclerAd
      */
     @Override
     public void onBindViewHolder(ImageViewHolder holder, int position) {
+        String picture = "";
+        if(mDataSet != null) picture = mDataSet.get(position).getFilename();
         Picasso.with(mContext)
-                .load(ASSETS_URL + mDataSet[position])
+                .load(ApiConst.TICKETS_IMGS_URL + picture)
                 .into(holder.mImageView);
     }
 
     @Override
     public int getItemCount() {
-        return mDataSet.length;
+        if(mDataSet != null) {
+            return mDataSet.size();
+        }
+        return 0;
     }
 
     /**
@@ -61,12 +69,12 @@ public class ImagesRecyclerAdapter extends RecyclerView.Adapter<ImagesRecyclerAd
 
         public ImageViewHolder(View itemView) {
             super(itemView);
-            mImageView = (ImageView) itemView.findViewById(R.id.myImage);
+            mImageView = (ImageView) itemView.findViewById(R.id.detail_image);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     String text = mContext.getString(R.string.toast_text) + (getAdapterPosition()
-                            + 1) + "\n " + (mDataSet[getAdapterPosition()]);
+                            + 1) + "\n " + (mDataSet.get(getAdapterPosition()));
                     Toast.makeText(mContext, text, Toast.LENGTH_SHORT).show();
                 }
             });

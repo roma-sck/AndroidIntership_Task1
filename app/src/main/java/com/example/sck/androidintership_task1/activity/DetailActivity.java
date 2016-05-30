@@ -14,7 +14,10 @@ import android.widget.Toast;
 
 import com.example.sck.androidintership_task1.adapters.ImagesRecyclerAdapter;
 import com.example.sck.androidintership_task1.R;
+import com.example.sck.androidintership_task1.models.File;
 import com.example.sck.androidintership_task1.models.IssueDataModel;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -44,7 +47,7 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     protected void onResume() {
         super.onResume();
-        setTitle(getString(R.string.detail_toolbar_title));
+        setTitle(mItemModel.getTicketId());
         initToolbar();
         initRecyclerView();
         setOnClickAllViews(mAllContent);
@@ -86,7 +89,11 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this,
                 LinearLayoutManager.HORIZONTAL, false);
         mRecyclerView.setLayoutManager(layoutManager);
-        ImagesRecyclerAdapter adapter = new ImagesRecyclerAdapter(this, getResources().getStringArray(R.array.image_urls));
+        List<File> pictures = null;
+        if (mItemModel.getFiles() != null) {
+            pictures = mItemModel.getFiles();
+        }
+        ImagesRecyclerAdapter adapter = new ImagesRecyclerAdapter(this, pictures);
         mRecyclerView.setAdapter(adapter);
     }
 

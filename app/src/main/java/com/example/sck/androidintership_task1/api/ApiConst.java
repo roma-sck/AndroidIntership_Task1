@@ -16,4 +16,6 @@ public class ApiConst {
     public static final String STATE_IN_PENDING_VALUES = "На розгляді,Прийнято модератором";
     public static final String STATE_IN_PENDING_VALUE_1 = "На";
     public static final String STATE_IN_PENDING_VALUE_2 = "При";
+
+    public static final String TICKETS_IMGS_URL = "http://dev-contact.yalantis.com/files/ticket/";
 }
