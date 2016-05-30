@@ -29,14 +29,6 @@
         android:layout_below="@+id/profile_image" />
 
     <TextView
-        android:id="@+id/profile_email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/profile_name" />
-
-    <TextView
         android:id="@+id/logout_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -45,7 +37,7 @@
         android:text="@string/facebook_logout_text"
         android:padding="@dimen/logout_btn_padding"
         android:layout_marginTop="@dimen/logout_btn_margin"
-        android:layout_below="@+id/profile_email"
+        android:layout_below="@+id/profile_name"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

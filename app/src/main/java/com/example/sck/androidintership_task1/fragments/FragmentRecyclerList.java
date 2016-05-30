@@ -71,7 +71,6 @@ public class FragmentRecyclerList extends Fragment {
         super.onCreate(savedInstanceState);
         initRealmDb();
         mApiService = ApiController.getApiService();
-        String requestState = getRequestState(getTabNum());
         loadApiDataFirstPage();
     }
 

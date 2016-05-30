@@ -9,29 +9,29 @@ import android.widget.Toast;
 
 import com.example.sck.androidintership_task1.models.FacebookUserModel;
 import com.example.sck.androidintership_task1.R;
-import com.example.sck.androidintership_task1.utils.SharedPrefUtils;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
-import com.facebook.GraphRequest;
-import com.facebook.GraphResponse;
+import com.facebook.Profile;
+import com.facebook.ProfileTracker;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
-import org.json.JSONObject;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.realm.Realm;
 
 public class FacebookLoginActivity extends Activity {
 
     @BindView (R.id.login_btn) TextView mCustomLoginBtn;
     @BindView (R.id.facebook_login_button) LoginButton mLoginButton;
+    private static final String ID_FIELD = "mFacebookID";
     private CallbackManager mCallbackManager;
-    private FacebookUserModel mUser;
     private String mToken;
+    private String mUserId;
+    private String mPermissions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,10 +39,6 @@ public class FacebookLoginActivity extends Activity {
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_facebook_login);
         ButterKnife.bind(this);
-        if(SharedPrefUtils.getCurrentUser(FacebookLoginActivity.this) != null){
-            startActivity(new Intent(FacebookLoginActivity.this, FacebookProfileActivity.class));
-            finish();
-        }
     }
 
     @Override
@@ -60,7 +56,6 @@ public class FacebookLoginActivity extends Activity {
                 mLoginButton.setVisibility(View.INVISIBLE);
             }
         });
-        mCustomLoginBtn.setVisibility(View.INVISIBLE);
     }
 
     @Override
@@ -73,27 +68,23 @@ public class FacebookLoginActivity extends Activity {
         @Override
         public void onSuccess(LoginResult loginResult) {
             mToken = loginResult.getAccessToken().getToken();
-            GraphRequest request = GraphRequest.newMeRequest(loginResult.getAccessToken(),
-                    new GraphRequest.GraphJSONObjectCallback() {
-                        @Override
-                        public void onCompleted(JSONObject obj, GraphResponse response) {
-                            try {
-                                mUser = new FacebookUserModel(
-                                        obj.getString(getString(R.string.fb_user_field_name)),
-                                        obj.getString(getString(R.string.fb_user_field_email)),
-                                        obj.getString(getString(R.string.fb_user_field_id)));
-                                SharedPrefUtils.setCurrentUser(mUser, FacebookLoginActivity.this);
-                            }catch (Exception e){
-                                e.printStackTrace();
-                            }
-                            startActivity(new Intent(FacebookLoginActivity.this, FacebookProfileActivity.class));
-                            finish();
-                        }
-                    });
-            Bundle parameters = new Bundle();
-            parameters.putString(getString(R.string.facebook_request_parameters_name), getString(R.string.facebook_request_parameters));
-            request.setParameters(parameters);
-            request.executeAsync();
+            mUserId = loginResult.getAccessToken().getUserId();
+            mPermissions = loginResult.getRecentlyGrantedPermissions().toString();
+            Profile profile = Profile.getCurrentProfile();
+            if (profile == null) {
+                ProfileTracker tracker = new ProfileTracker() {
+                    @Override
+                    protected void onCurrentProfileChanged(Profile oldProfile, Profile currentProfile) {
+                        stopTracking();
+                        saveProfileToDb(currentProfile);
+                    }
+                };
+                tracker.startTracking();
+            } else {
+                saveProfileToDb(profile);
+            }
+            startActivity(new Intent(FacebookLoginActivity.this, FacebookProfileActivity.class));
+            finish();
         }
 
         @Override
@@ -106,4 +97,21 @@ public class FacebookLoginActivity extends Activity {
             Toast.makeText(FacebookLoginActivity.this, e.getMessage(),Toast.LENGTH_LONG).show();
         }
     };
+
+    private void saveProfileToDb(Profile profile) {
+        Realm realm = Realm.getDefaultInstance();
+        if (profile != null) {
+            realm.beginTransaction();
+            FacebookUserModel user = realm.where(FacebookUserModel.class).equalTo(ID_FIELD, mUserId).findFirst();
+            if (user == null) {
+                user = new FacebookUserModel();
+                user.setFacebookID(mUserId);
+                user.setAccessToken(mToken);
+                user.setName(profile.getName());
+                user.setPermissions(mPermissions);
+            }
+            realm.commitTransaction();
+            realm.close();
+        }
+    }
 }

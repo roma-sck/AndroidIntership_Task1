@@ -1,25 +1,44 @@
 package com.example.sck.androidintership_task1.models;
 
-public class FacebookUserModel {
-    private String mName;
-    private String mEmail;
-    private String mFacebookID;
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
-    public FacebookUserModel(String name, String email, String facebookID) {
-        mName = name;
-        mEmail = email;
+public class FacebookUserModel extends RealmObject {
+    @PrimaryKey
+    private String mFacebookID;
+    private String mAccessToken;
+    private String mName;
+    private String mPermissions;
+
+    public String getFacebookID() {
+        return mFacebookID;
+    }
+
+    public void setFacebookID(String facebookID) {
         mFacebookID = facebookID;
+    }
+
+    public String getAccessToken() {
+        return mAccessToken;
+    }
+
+    public void setAccessToken(String accessToken) {
+        mAccessToken = accessToken;
     }
 
     public String getName() {
         return mName;
     }
 
-    public String getEmail() {
-        return mEmail;
+    public void setName(String name) {
+        mName = name;
     }
 
-    public String getFacebookID() {
-        return mFacebookID;
+    public String getPermissions() {
+        return mPermissions;
+    }
+
+    public void setPermissions(String permissions) {
+        mPermissions = permissions;
     }
 }
