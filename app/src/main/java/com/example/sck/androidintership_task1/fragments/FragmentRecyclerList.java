@@ -130,14 +130,14 @@ public class FragmentRecyclerList extends Fragment {
         RealmResults<IssueDataModel> results;
         if (stateValue.equals(ApiConst.STATE_IN_PENDING_VALUES)) {
             results = realm.where(IssueDataModel.class)
-                    .notEqualTo(ApiConst.STATE_FIELD_NAME, ApiConst.STATE_IN_PROGRESS_VALUE)
+                    .contains(ApiConst.STATE_FIELD_NAME, ApiConst.STATE_IN_PENDING_VALUE_1)
                     .or()
-                    .notEqualTo(ApiConst.STATE_FIELD_NAME, ApiConst.STATE_IN_DONE_VALUE)
+                    .contains(ApiConst.STATE_FIELD_NAME, ApiConst.STATE_IN_PENDING_VALUE_2)
                     .findAllAsync();
         } else {
-        results = realm.where(IssueDataModel.class)
-                .equalTo(ApiConst.STATE_FIELD_NAME, stateValue)
-                .findAllAsync();
+            results = realm.where(IssueDataModel.class)
+                    .equalTo(ApiConst.STATE_FIELD_NAME, stateValue)
+                    .findAllAsync();
         }
         realm.close();
         RealmRecyclerAdapter adapter = new RealmRecyclerAdapter(getContext(), results);
@@ -170,14 +170,14 @@ public class FragmentRecyclerList extends Fragment {
         });
     }
 
-private class OnRecyclerItemClickListener extends RecyclerItemClickListener.SimpleOnItemClickListener {
-    @Override
-    public void onItemClick(View childView, int position) {
-        String text = getActivity().getString(R.string.intent_to_detail_recycler_msg)
-                + (position + 1);
-        Intent openDetail = new Intent(getActivity(), DetailActivity.class);
-        openDetail.putExtra(getActivity().getString(R.string.intent_to_detail_extra_name), text);
-        getActivity().startActivity(openDetail);
+    private class OnRecyclerItemClickListener extends RecyclerItemClickListener.SimpleOnItemClickListener {
+        @Override
+        public void onItemClick(View childView, int position) {
+            String text = getActivity().getString(R.string.intent_to_detail_recycler_msg)
+                    + (position + 1);
+            Intent openDetail = new Intent(getActivity(), DetailActivity.class);
+            openDetail.putExtra(getActivity().getString(R.string.intent_to_detail_extra_name), text);
+            getActivity().startActivity(openDetail);
+        }
     }
-}
 }

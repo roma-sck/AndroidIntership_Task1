@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.example.sck.androidintership_task1.R;
 import com.example.sck.androidintership_task1.models.IssueDataModel;
+import com.example.sck.androidintership_task1.models.Street;
 import com.example.sck.androidintership_task1.utils.DateConverter;
 
 import butterknife.BindView;
@@ -54,13 +55,12 @@ public class RealmRecyclerAdapter extends RealmRecyclerViewAdapter<IssueDataMode
         holder.mImage.setImageResource(R.mipmap.ic_doc);
         holder.mLikeCount.setText(String.valueOf(dataModel.getLikesCounter()));
         holder.mTitle.setText(dataModel.getTitle());
-        String streetType = dataModel.getUser().getAddress().getStreet().getStreetType().getShortName();
-        String streetName = dataModel.getUser().getAddress().getStreet().getName();
-        String address = streetType + " " + streetName;
+        Street street = dataModel.getUser().getAddress().getStreet();
+        String address = street.getStreetType().getShortName() + " " + street.getName();
         holder.mAddress.setText(address);
         String date = DateConverter.convertDate(dataModel.getCreatedDate());
         holder.mDate.setText(date);
-        String daysLeft = DateConverter.getDaysLeft(dataModel.getStartDate());
+        String daysLeft = DateConverter.getDaysLeft(dataModel.getCreatedDate());
         holder.mDaysLeft.setText(daysLeft);
     }
 

@@ -13,4 +13,6 @@ public class ApiConst {
     public static final String STATE_IN_PROGRESS_VALUE = "В роботі";
     public static final String STATE_IN_DONE_VALUE = "Виконано";
     public static final String STATE_IN_PENDING_VALUES = "На розгляді,Прийнято модератором";
+    public static final String STATE_IN_PENDING_VALUE_1 = "На";
+    public static final String STATE_IN_PENDING_VALUE_2 = "При";
 }
