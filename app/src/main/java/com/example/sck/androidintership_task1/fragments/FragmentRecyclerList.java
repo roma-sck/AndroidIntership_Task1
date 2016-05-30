@@ -2,7 +2,6 @@ package com.example.sck.androidintership_task1.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,12 +13,12 @@ import android.widget.Toast;
 
 import com.example.sck.androidintership_task1.R;
 import com.example.sck.androidintership_task1.activity.DetailActivity;
-import com.example.sck.androidintership_task1.adapters.MainPagerAdapter;
 import com.example.sck.androidintership_task1.adapters.RealmRecyclerAdapter;
 import com.example.sck.androidintership_task1.api.ApiConst;
 import com.example.sck.androidintership_task1.api.ApiController;
 import com.example.sck.androidintership_task1.api.ApiService;
 import com.example.sck.androidintership_task1.models.IssueDataModel;
+import com.example.sck.androidintership_task1.utils.LoadMoreRecyclerScrollListener;
 import com.example.sck.androidintership_task1.utils.RecyclerItemClickListener;
 
 import java.util.List;
@@ -44,6 +43,7 @@ public class FragmentRecyclerList extends Fragment {
     private static final String RECYCLER_KEY = "recycler_key";
     private ApiService mApiService;
     private RealmConfiguration mRealmConfig;
+    private int mLoadingTicketsAmount = 0;
 
     public FragmentRecyclerList() {
         // required empty constructor
@@ -71,6 +71,7 @@ public class FragmentRecyclerList extends Fragment {
         super.onCreate(savedInstanceState);
         initRealmDb();
         mApiService = ApiController.getApiService();
+        String requestState = getRequestState(getTabNum());
         loadApiDataFirstPage();
     }
 
@@ -153,6 +154,15 @@ public class FragmentRecyclerList extends Fragment {
         mRecyclerView.setAdapter(adapter);
     }
 
+    private String getRequestState(int tabNum) {
+        switch (tabNum) {
+            case TAB_ONE : return ApiConst.STATE_IN_PROGRESS;
+            case TAB_TWO : return ApiConst.STATE_IN_DONE;
+            case TAB_THREE : return ApiConst.STATE_IN_PENDING;
+        }
+        return null;
+    }
+
     private String getStateValue(int tabNum) {
         switch (tabNum) {
             case TAB_ONE : return ApiConst.STATE_IN_PROGRESS_VALUE;
@@ -168,6 +178,15 @@ public class FragmentRecyclerList extends Fragment {
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(),
                 new OnRecyclerItemClickListener()));
+        mRecyclerView.addOnScrollListener(new LoadMoreRecyclerScrollListener(
+                (LinearLayoutManager) mRecyclerView.getLayoutManager()) {
+            @Override
+            public void onLoadMore(int page, int totalItemsCount) {
+                // load next amount of tickets
+                mLoadingTicketsAmount += ApiConst.TICKETS_AMOUNT;
+                loadApiData(getRequestState(getTabNum()), ApiConst.TICKETS_AMOUNT, mLoadingTicketsAmount);
+            }
+        });
     }
 
     private void initSwipeToRefresh() {
@@ -175,6 +194,7 @@ public class FragmentRecyclerList extends Fragment {
             @Override
             public void onRefresh() {
                 clearRealmDb();
+                mLoadingTicketsAmount = 0;
                 loadApiDataFirstPage();
                 mSwipeRefreshLayout.setRefreshing(false);
             }
