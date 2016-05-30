@@ -14,29 +14,49 @@ import android.widget.Toast;
 
 import com.example.sck.androidintership_task1.adapters.ImagesRecyclerAdapter;
 import com.example.sck.androidintership_task1.R;
+import com.example.sck.androidintership_task1.models.IssueDataModel;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.realm.Realm;
+import io.realm.RealmConfiguration;
+import io.realm.RealmResults;
 
 public class DetailActivity extends AppCompatActivity implements View.OnClickListener {
     @BindView(R.id.toolbar) Toolbar mToolbar;
     @BindView(R.id.content) ViewGroup mAllContent;
     @BindView(R.id.recycler_view) RecyclerView mRecyclerView;
+    private static final String ID_FIELD = "id";
+    private IssueDataModel mItemModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
         ButterKnife.bind(this);
-        // get text sent from Fragment
+        // get itemId sent from Fragment
         Bundle bundle = this.getIntent().getExtras();
-        String text = bundle.getString(getString(R.string.intent_to_detail_extra_name));
-        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
+        int itemId = bundle.getInt(getString(R.string.intent_to_detail_extra_name));
 
+        mItemModel = getModelById(itemId);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         setTitle(getString(R.string.detail_toolbar_title));
         initToolbar();
         initRecyclerView();
         setOnClickAllViews(mAllContent);
+    }
+
+    private IssueDataModel getModelById(int id) {
+        Realm realm = Realm.getDefaultInstance();
+        IssueDataModel results = realm.where(IssueDataModel.class)
+                .equalTo(ID_FIELD, id)
+                .findFirst();
+        realm.close();
+        return results;
     }
 
     /**

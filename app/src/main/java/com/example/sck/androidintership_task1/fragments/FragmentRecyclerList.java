@@ -43,6 +43,7 @@ public class FragmentRecyclerList extends Fragment {
     private static final String RECYCLER_KEY = "recycler_key";
     private ApiService mApiService;
     private RealmConfiguration mRealmConfig;
+    private RealmResults<IssueDataModel> mResults;
     private int mLoadingTicketsAmount = 0;
 
     public FragmentRecyclerList() {
@@ -136,20 +137,19 @@ public class FragmentRecyclerList extends Fragment {
     private void loadDataFromDb() {
         String stateValue = getStateValue(getTabNum());
         Realm realm = Realm.getDefaultInstance();
-        RealmResults<IssueDataModel> results;
         if (stateValue.equals(ApiConst.STATE_IN_PENDING_VALUES)) {
-            results = realm.where(IssueDataModel.class)
+            mResults = realm.where(IssueDataModel.class)
                     .contains(ApiConst.STATE_FIELD_NAME, ApiConst.STATE_IN_PENDING_VALUE_1)
                     .or()
                     .contains(ApiConst.STATE_FIELD_NAME, ApiConst.STATE_IN_PENDING_VALUE_2)
                     .findAllAsync();
         } else {
-            results = realm.where(IssueDataModel.class)
+            mResults = realm.where(IssueDataModel.class)
                     .equalTo(ApiConst.STATE_FIELD_NAME, stateValue)
                     .findAllAsync();
         }
         realm.close();
-        RealmRecyclerAdapter adapter = new RealmRecyclerAdapter(getContext(), results);
+        RealmRecyclerAdapter adapter = new RealmRecyclerAdapter(getContext(), mResults);
         mRecyclerView.setAdapter(adapter);
     }
 
@@ -211,10 +211,15 @@ public class FragmentRecyclerList extends Fragment {
     private class OnRecyclerItemClickListener extends RecyclerItemClickListener.SimpleOnItemClickListener {
         @Override
         public void onItemClick(View childView, int position) {
-            String text = getActivity().getString(R.string.intent_to_detail_recycler_msg)
-                    + (position + 1);
+//            String text = getActivity().getString(R.string.intent_to_detail_recycler_msg)
+//                    + (position + 1);
+//            Intent openDetail = new Intent(getActivity(), DetailActivity.class);
+//            openDetail.putExtra(getActivity().getString(R.string.intent_to_detail_extra_name), text);
+//            getActivity().startActivity(openDetail);
+            IssueDataModel itemModel = mResults.get(position);
+            int modelId = itemModel.getId();
             Intent openDetail = new Intent(getActivity(), DetailActivity.class);
-            openDetail.putExtra(getActivity().getString(R.string.intent_to_detail_extra_name), text);
+            openDetail.putExtra(getActivity().getString(R.string.intent_to_detail_extra_name), modelId);
             getActivity().startActivity(openDetail);
         }
     }
