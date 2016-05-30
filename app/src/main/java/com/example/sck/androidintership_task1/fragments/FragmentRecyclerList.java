@@ -10,9 +10,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.sck.androidintership_task1.R;
 import com.example.sck.androidintership_task1.activity.DetailActivity;
+import com.example.sck.androidintership_task1.adapters.MainPagerAdapter;
 import com.example.sck.androidintership_task1.adapters.RealmRecyclerAdapter;
 import com.example.sck.androidintership_task1.api.ApiConst;
 import com.example.sck.androidintership_task1.api.ApiController;
@@ -36,9 +38,9 @@ public class FragmentRecyclerList extends Fragment {
 
     @BindView(R.id.appeals_recycler_list) RecyclerView mRecyclerView;
     @BindView(R.id.swipe_to_refresh) SwipeRefreshLayout mSwipeRefreshLayout;
-    public static final int TAB_ONE = 0;
-    public static final int TAB_TWO = 1;
-    public static final int TAB_THREE = 2;
+    public static final int TAB_ONE = 1;
+    public static final int TAB_TWO = 2;
+    public static final int TAB_THREE = 3;
     private static final String RECYCLER_KEY = "recycler_key";
     private ApiService mApiService;
     private RealmConfiguration mRealmConfig;
@@ -65,7 +67,7 @@ public class FragmentRecyclerList extends Fragment {
     }
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initRealmDb();
         mApiService = ApiController.getApiService();
@@ -108,6 +110,7 @@ public class FragmentRecyclerList extends Fragment {
                     @Override
                     public void onError(Throwable e) {
                         e.printStackTrace();
+                        Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                     @Override
                     public void onNext(List<IssueDataModel> issues) {
@@ -124,11 +127,18 @@ public class FragmentRecyclerList extends Fragment {
     private void loadDataFromDb() {
         String stateValue = getStateValue(getTabNum());
         Realm realm = Realm.getDefaultInstance();
-//        RealmResults<IssueDataModel> results = realm.where(IssueDataModel.class).findAllAsync();
         RealmResults<IssueDataModel> results;
+        if (stateValue.equals(ApiConst.STATE_IN_PENDING_VALUES)) {
+            results = realm.where(IssueDataModel.class)
+                    .notEqualTo(ApiConst.STATE_FIELD_NAME, ApiConst.STATE_IN_PROGRESS_VALUE)
+                    .or()
+                    .notEqualTo(ApiConst.STATE_FIELD_NAME, ApiConst.STATE_IN_DONE_VALUE)
+                    .findAllAsync();
+        } else {
         results = realm.where(IssueDataModel.class)
                 .equalTo(ApiConst.STATE_FIELD_NAME, stateValue)
                 .findAllAsync();
+        }
         realm.close();
         RealmRecyclerAdapter adapter = new RealmRecyclerAdapter(getContext(), results);
         mRecyclerView.setAdapter(adapter);
@@ -138,7 +148,7 @@ public class FragmentRecyclerList extends Fragment {
         switch (tabNum) {
             case TAB_ONE : return ApiConst.STATE_IN_PROGRESS_VALUE;
             case TAB_TWO : return ApiConst.STATE_IN_DONE_VALUE;
-            case TAB_THREE : return ApiConst.STATE_IN_PENDING_VALUE;
+            case TAB_THREE : return ApiConst.STATE_IN_PENDING_VALUES;
         }
         return null;
     }
@@ -160,14 +170,14 @@ public class FragmentRecyclerList extends Fragment {
         });
     }
 
-    private class OnRecyclerItemClickListener extends RecyclerItemClickListener.SimpleOnItemClickListener {
-        @Override
-        public void onItemClick(View childView, int position) {
-            String text = getActivity().getString(R.string.intent_to_detail_recycler_msg)
-                    + (position + 1);
-            Intent openDetail = new Intent(getActivity(), DetailActivity.class);
-            openDetail.putExtra(getActivity().getString(R.string.intent_to_detail_extra_name), text);
-            getActivity().startActivity(openDetail);
-        }
+private class OnRecyclerItemClickListener extends RecyclerItemClickListener.SimpleOnItemClickListener {
+    @Override
+    public void onItemClick(View childView, int position) {
+        String text = getActivity().getString(R.string.intent_to_detail_recycler_msg)
+                + (position + 1);
+        Intent openDetail = new Intent(getActivity(), DetailActivity.class);
+        openDetail.putExtra(getActivity().getString(R.string.intent_to_detail_extra_name), text);
+        getActivity().startActivity(openDetail);
     }
+}
 }
