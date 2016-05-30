@@ -16,6 +16,7 @@ import com.example.sck.androidintership_task1.adapters.ImagesRecyclerAdapter;
 import com.example.sck.androidintership_task1.R;
 import com.example.sck.androidintership_task1.models.File;
 import com.example.sck.androidintership_task1.models.IssueDataModel;
+import com.example.sck.androidintership_task1.utils.DateConverter;
 
 import java.util.List;
 
@@ -29,6 +30,13 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
     @BindView(R.id.toolbar) Toolbar mToolbar;
     @BindView(R.id.content) ViewGroup mAllContent;
     @BindView(R.id.recycler_view) RecyclerView mRecyclerView;
+    @BindView(R.id.item_title) TextView mTitle;
+    @BindView(R.id.status) TextView mStatus;
+    @BindView(R.id.created_date) TextView mCreatedDate;
+    @BindView(R.id.registered_date) TextView mRegisteredDate;
+    @BindView(R.id.resolve_to_date) TextView mResolveToDate;
+    @BindView(R.id.responsible_name) TextView mResponcibleName;
+    @BindView(R.id.body) TextView mBodyText;
     private static final String ID_FIELD = "id";
     private IssueDataModel mItemModel;
 
@@ -37,11 +45,14 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
         ButterKnife.bind(this);
+
         // get itemId sent from Fragment
         Bundle bundle = this.getIntent().getExtras();
         int itemId = bundle.getInt(getString(R.string.intent_to_detail_extra_name));
-
         mItemModel = getModelById(itemId);
+        if (mItemModel != null) {
+            getDataFromModel(mItemModel);
+        }
     }
 
     @Override
@@ -60,6 +71,24 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
                 .findFirst();
         realm.close();
         return results;
+    }
+
+    private void getDataFromModel(IssueDataModel mItemModel) {
+        mTitle.setText(mItemModel.getTitle());
+        mStatus.setText(mItemModel.getState().getName());
+        mCreatedDate.setText(DateConverter.convertDate(mItemModel.getCreatedDate()));
+        mRegisteredDate.setText(DateConverter.convertDate(mItemModel.getStartDate()));
+        if (mItemModel.getDeadline() != 0) {
+            mResolveToDate.setText(DateConverter.convertDate(mItemModel.getDeadline()));
+        } else {
+            mResolveToDate.setText("");
+        }
+        if (mItemModel.getPerformers().size() != 0) {
+            mResponcibleName.setText(mItemModel.getPerformers().get(0).getOrganization());
+        } else {
+            mResponcibleName.setText("");
+        }
+        mBodyText.setText(mItemModel.getBody());
     }
 
     /**

@@ -20,12 +20,14 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/item_title"
                 style="@style/DetailTextView_Base"
                 android:layout_marginBottom="@dimen/text_bottom_top_margin"
                 android:text="@string/detail_text_branch"
                 android:textSize="@dimen/detail_branch_text_size" />
 
             <TextView
+                android:id="@+id/status"
                 style="@style/DetailTextView_Base"
                 android:background="@drawable/rounded_textview"
                 android:paddingBottom="@dimen/detail_status_padding_topbottom"
@@ -50,6 +52,7 @@
                 android:text="@string/detail_text_created_text" />
 
             <TextView
+                android:id="@+id/created_date"
                 style="@style/DetailTextView_Base"
                 android:gravity="end"
                 android:text="@string/detail_text_created_date" />
@@ -69,6 +72,7 @@
                 android:text="@string/detail_text_registered_text" />
 
             <TextView
+                android:id="@+id/registered_date"
                 style="@style/DetailTextView_Base"
                 android:gravity="end"
                 android:text="@string/detail_text_registered_date" />
@@ -88,6 +92,7 @@
                 android:text="@string/detail_text_resolve_text" />
 
             <TextView
+                android:id="@+id/resolve_to_date"
                 style="@style/DetailTextView_Base"
                 android:gravity="end"
                 android:text="@string/detail_text_resolve_date" />
@@ -107,6 +112,7 @@
                 android:text="@string/detail_text_responsible_text" />
 
             <TextView
+                android:id="@+id/responsible_name"
                 style="@style/DetailTextView_Base"
                 android:gravity="end"
                 android:text="@string/detail_text_responsible_name" />
@@ -116,6 +122,7 @@
         <View style="@style/Divider" />
 
         <TextView
+            android:id="@+id/body"
             style="@style/DetailTextView_Base"
             android:layout_marginBottom="@dimen/text_bottom_top_margin"
             android:layout_marginTop="@dimen/text_bottom_top_margin"
