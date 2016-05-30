@@ -8,6 +8,7 @@ public class ApiConst {
     public static final String STATE_IN_PENDING = "1,3,4";
 
     public static final int TICKETS_AMOUNT = 10;
+    public static final int TICKETS_WITHOUT_OFFSET = -1;
 
     public static final String STATE_FIELD_NAME = "state.name";
     public static final String STATE_IN_PROGRESS_VALUE = "В роботі";

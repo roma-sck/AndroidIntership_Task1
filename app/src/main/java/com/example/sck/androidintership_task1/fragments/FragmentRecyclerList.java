@@ -71,9 +71,13 @@ public class FragmentRecyclerList extends Fragment {
         super.onCreate(savedInstanceState);
         initRealmDb();
         mApiService = ApiController.getApiService();
-        loadApiData(ApiConst.STATE_IN_PROGRESS, ApiConst.TICKETS_AMOUNT);
-        loadApiData(ApiConst.STATE_IN_DONE, ApiConst.TICKETS_AMOUNT);
-        loadApiData(ApiConst.STATE_IN_PENDING, ApiConst.TICKETS_AMOUNT);
+        loadApiDataFirstPage();
+    }
+
+    private void loadApiDataFirstPage() {
+        loadApiData(ApiConst.STATE_IN_PROGRESS, ApiConst.TICKETS_AMOUNT, ApiConst.TICKETS_WITHOUT_OFFSET);
+        loadApiData(ApiConst.STATE_IN_DONE, ApiConst.TICKETS_AMOUNT, ApiConst.TICKETS_WITHOUT_OFFSET);
+        loadApiData(ApiConst.STATE_IN_PENDING, ApiConst.TICKETS_AMOUNT, ApiConst.TICKETS_WITHOUT_OFFSET);
     }
 
     @Override
@@ -98,8 +102,13 @@ public class FragmentRecyclerList extends Fragment {
         Realm.getDefaultInstance();
     }
 
-    private void loadApiData(String state, int amount) {
-        Observable<List<IssueDataModel>> observable = mApiService.loadData(state, amount);
+    private void loadApiData(String state, int amount, int offset) {
+        Observable<List<IssueDataModel>> observable;
+        if(offset == ApiConst.TICKETS_WITHOUT_OFFSET) {
+            observable = mApiService.loadData(state, amount);
+        } else {
+            observable = mApiService.loadData(state, amount, offset);
+        }
         observable
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -165,9 +174,19 @@ public class FragmentRecyclerList extends Fragment {
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+                clearRealmDb();
+                loadApiDataFirstPage();
                 mSwipeRefreshLayout.setRefreshing(false);
             }
         });
+    }
+
+    private void clearRealmDb() {
+        Realm realm = Realm.getDefaultInstance();
+        realm.beginTransaction();
+        realm.deleteAll();
+        realm.commitTransaction();
+        realm.close();
     }
 
     private class OnRecyclerItemClickListener extends RecyclerItemClickListener.SimpleOnItemClickListener {
