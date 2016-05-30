@@ -8,7 +8,6 @@ public class FacebookUserModel extends RealmObject {
     private String mFacebookID;
     private String mAccessToken;
     private String mName;
-    private String mPermissions;
 
     public String getFacebookID() {
         return mFacebookID;
@@ -32,13 +31,5 @@ public class FacebookUserModel extends RealmObject {
 
     public void setName(String name) {
         mName = name;
-    }
-
-    public String getPermissions() {
-        return mPermissions;
-    }
-
-    public void setPermissions(String permissions) {
-        mPermissions = permissions;
     }
 }

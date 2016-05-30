@@ -119,7 +119,7 @@ public class MainActivity extends AppCompatActivity
         } if (id == R.id.nav_appeals_on_map) {
             // do something
         } if (id == R.id.nav_sing_in) {
-            this.startActivity(new Intent(this, FacebookLoginActivity.class));
+            this.startActivity(new Intent(this, FacebookProfileActivity.class));
         }
         mDrawer.closeDrawer(GravityCompat.START);
         return true;
