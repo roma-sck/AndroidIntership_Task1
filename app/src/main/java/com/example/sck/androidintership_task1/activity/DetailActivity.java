@@ -21,9 +21,8 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import io.realm.Realm;
 
-public class DetailActivity extends AppCompatActivity implements View.OnClickListener {
+public class DetailActivity extends AppCompatActivity implements DetailContract.View, View.OnClickListener {
     @BindView(R.id.toolbar) Toolbar mToolbar;
     @BindView(R.id.content) ViewGroup mAllContent;
     @BindView(R.id.recycler_view) RecyclerView mRecyclerView;
@@ -34,8 +33,7 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
     @BindView(R.id.resolve_to_date) TextView mResolveToDate;
     @BindView(R.id.responsible_name) TextView mResponcibleName;
     @BindView(R.id.body) TextView mBodyText;
-    private static final String ID_FIELD = "id";
-    private IssueDataModel mItemModel;
+    private List<File> mPictures;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,46 +44,39 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         // get itemId sent from Fragment
         Bundle bundle = this.getIntent().getExtras();
         int itemId = bundle.getInt(getString(R.string.intent_to_detail_extra_name));
-        mItemModel = getModelById(itemId);
-        if (mItemModel != null) {
-            getDataFromModel(mItemModel);
-        }
+        DetailPresenter presenter = new DetailPresenter(this);
+        presenter.loadModelById(itemId);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        setTitle(mItemModel.getTicketId());
         initToolbar();
         initRecyclerView();
         setOnClickAllViews(mAllContent);
     }
 
-    private IssueDataModel getModelById(int id) {
-        Realm realm = Realm.getDefaultInstance();
-        IssueDataModel results = realm.where(IssueDataModel.class)
-                .equalTo(ID_FIELD, id)
-                .findFirst();
-        realm.close();
-        return results;
-    }
-
-    private void getDataFromModel(IssueDataModel mItemModel) {
-        mTitle.setText(mItemModel.getTitle());
-        mStatus.setText(mItemModel.getState().getName());
-        mCreatedDate.setText(DateConverter.convertDate(mItemModel.getCreatedDate()));
-        mRegisteredDate.setText(DateConverter.convertDate(mItemModel.getStartDate()));
-        if (mItemModel.getDeadline() != 0) {
-            mResolveToDate.setText(DateConverter.convertDate(mItemModel.getDeadline()));
+    @Override
+    public void updateViews(IssueDataModel itemModel) {
+        setTitle(itemModel.getTicketId());
+        mTitle.setText(itemModel.getTitle());
+        mStatus.setText(itemModel.getState().getName());
+        mCreatedDate.setText(DateConverter.convertDate(itemModel.getCreatedDate()));
+        mRegisteredDate.setText(DateConverter.convertDate(itemModel.getStartDate()));
+        if (itemModel.getDeadline() != 0) {
+            mResolveToDate.setText(DateConverter.convertDate(itemModel.getDeadline()));
         } else {
             mResolveToDate.setText("");
         }
-        if (mItemModel.getPerformers().size() != 0) {
-            mResponcibleName.setText(mItemModel.getPerformers().get(0).getOrganization());
+        if (itemModel.getPerformers().size() != 0) {
+            mResponcibleName.setText(itemModel.getPerformers().get(0).getOrganization());
         } else {
             mResponcibleName.setText("");
         }
-        mBodyText.setText(mItemModel.getBody());
+        mBodyText.setText(itemModel.getBody());
+        if (itemModel.getFiles() != null) {
+            mPictures = itemModel.getFiles();
+        }
     }
 
     /**
@@ -115,11 +106,7 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this,
                 LinearLayoutManager.HORIZONTAL, false);
         mRecyclerView.setLayoutManager(layoutManager);
-        List<File> pictures = null;
-        if (mItemModel.getFiles() != null) {
-            pictures = mItemModel.getFiles();
-        }
-        ImagesRecyclerAdapter adapter = new ImagesRecyclerAdapter(this, pictures);
+        ImagesRecyclerAdapter adapter = new ImagesRecyclerAdapter(this, mPictures);
         mRecyclerView.setAdapter(adapter);
     }
 
