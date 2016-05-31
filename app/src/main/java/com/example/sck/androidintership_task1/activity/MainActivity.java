@@ -1,6 +1,5 @@
 package com.example.sck.androidintership_task1.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -17,13 +16,12 @@ import android.view.View;
 
 import com.example.sck.androidintership_task1.R;
 import com.example.sck.androidintership_task1.adapters.MainPagerAdapter;
-import com.example.sck.androidintership_task1.fragments.FragmentRecyclerList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements MainContract.View, NavigationView.OnNavigationItemSelectedListener {
 
     @BindView(R.id.action_button) FloatingActionButton mActionButton;
     @BindView(R.id.toolbar) Toolbar mToolbar;
@@ -31,6 +29,7 @@ public class MainActivity extends AppCompatActivity
     @BindView(R.id.nav_view) NavigationView mNavigationView;
     @BindView(R.id.viewpager) ViewPager mViewPager;
     @BindView(R.id.tabs) TabLayout mTabs;
+    private MainPresenter mPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +38,7 @@ public class MainActivity extends AppCompatActivity
         setTitle(getString(R.string.all_appeals_text));
         ButterKnife.bind(this);
 
+        mPresenter = new MainPresenter(this, this);
         setUpToolbar();
         mActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity
             }
         });
         mNavigationView.setNavigationItemSelectedListener(this);
-        setUpViewPager();
+        mPresenter.preparePagerAdapter();
     }
 
     /**
@@ -68,12 +68,8 @@ public class MainActivity extends AppCompatActivity
      * setting ViewPager for each Tabs
      *
      */
-    private void setUpViewPager() {
-        // add Fragments to Tabs, transfer model with data
-        MainPagerAdapter pagerAdapter = new MainPagerAdapter(getSupportFragmentManager());
-        pagerAdapter.addFragment(FragmentRecyclerList.getInstance(FragmentRecyclerList.TAB_ONE), getString(R.string.appeals_tab_inWork));
-        pagerAdapter.addFragment(FragmentRecyclerList.getInstance(FragmentRecyclerList.TAB_TWO), getString(R.string.appeals_tab_done));
-        pagerAdapter.addFragment(FragmentRecyclerList.getInstance(FragmentRecyclerList.TAB_THREE), getString(R.string.appeals_tab_notDone));
+    @Override
+    public void setUpViewPager(MainPagerAdapter pagerAdapter) {
         mViewPager.setAdapter(pagerAdapter);
         // set Tabs inside ToolbarLayout
         mTabs.setupWithViewPager(mViewPager);
@@ -119,7 +115,7 @@ public class MainActivity extends AppCompatActivity
         } if (id == R.id.nav_appeals_on_map) {
             // do something
         } if (id == R.id.nav_sing_in) {
-            this.startActivity(new Intent(this, FacebookProfileActivity.class));
+            mPresenter.onFacebookLogInClick();
         }
         mDrawer.closeDrawer(GravityCompat.START);
         return true;
