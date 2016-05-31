@@ -15,25 +15,13 @@ import com.example.sck.androidintership_task1.R;
 import com.example.sck.androidintership_task1.activity.DetailActivity;
 import com.example.sck.androidintership_task1.adapters.RealmRecyclerAdapter;
 import com.example.sck.androidintership_task1.api.ApiConst;
-import com.example.sck.androidintership_task1.api.ApiController;
-import com.example.sck.androidintership_task1.api.ApiService;
-import com.example.sck.androidintership_task1.models.IssueDataModel;
 import com.example.sck.androidintership_task1.utils.LoadMoreRecyclerScrollListener;
 import com.example.sck.androidintership_task1.utils.RecyclerItemClickListener;
 
-import java.util.List;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import io.realm.Realm;
-import io.realm.RealmConfiguration;
-import io.realm.RealmResults;
-import rx.Observable;
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
-public class FragmentRecyclerList extends Fragment {
+public class FragmentRecyclerList extends Fragment implements FragmentContract.View {
 
     @BindView(R.id.appeals_recycler_list) RecyclerView mRecyclerView;
     @BindView(R.id.swipe_to_refresh) SwipeRefreshLayout mSwipeRefreshLayout;
@@ -41,10 +29,8 @@ public class FragmentRecyclerList extends Fragment {
     public static final int TAB_TWO = 2;
     public static final int TAB_THREE = 3;
     private static final String RECYCLER_KEY = "recycler_key";
-    private ApiService mApiService;
-    private RealmConfiguration mRealmConfig;
-    private RealmResults<IssueDataModel> mResults;
     private int mLoadingTicketsAmount = 0;
+    private FragmentPresenter mPresenter;
 
     public FragmentRecyclerList() {
         // required empty constructor
@@ -63,22 +49,15 @@ public class FragmentRecyclerList extends Fragment {
         return fragment;
     }
 
-    public int getTabNum() {
+    private int getTabNum() {
         return getArguments().getInt(RECYCLER_KEY);
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initRealmDb();
-        mApiService = ApiController.getApiService();
-        loadApiDataFirstPage();
-    }
-
-    private void loadApiDataFirstPage() {
-        loadApiData(ApiConst.STATE_IN_PROGRESS, ApiConst.TICKETS_AMOUNT, ApiConst.TICKETS_WITHOUT_OFFSET);
-        loadApiData(ApiConst.STATE_IN_DONE, ApiConst.TICKETS_AMOUNT, ApiConst.TICKETS_WITHOUT_OFFSET);
-        loadApiData(ApiConst.STATE_IN_PENDING, ApiConst.TICKETS_AMOUNT, ApiConst.TICKETS_WITHOUT_OFFSET);
+        mPresenter = new FragmentPresenter(getContext(), this, getTabNum());
+        mPresenter.initRealmDb();
     }
 
     @Override
@@ -86,89 +65,16 @@ public class FragmentRecyclerList extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_recycler_list, container, false);
         ButterKnife.bind(this, rootView);
-        setUpRecyclerList();
-        loadDataFromDb();
         initSwipeToRefresh();
+        mPresenter.loadApiDataFirstPage();
+        mPresenter.loadDataFromDb();
+        setUpRecyclerList();
         return rootView;
     }
 
-    private void initRealmDb() {
-        if (mRealmConfig == null) {
-            mRealmConfig = new RealmConfiguration
-                    .Builder(this.getActivity().getApplication().getApplicationContext())
-                    .deleteRealmIfMigrationNeeded()
-                    .build();
-            Realm.setDefaultConfiguration(mRealmConfig);
-        }
-        Realm.getDefaultInstance();
-    }
-
-    private void loadApiData(String state, int amount, int offset) {
-        Observable<List<IssueDataModel>> observable;
-        if(offset == ApiConst.TICKETS_WITHOUT_OFFSET) {
-            observable = mApiService.loadData(state, amount);
-        } else {
-            observable = mApiService.loadData(state, amount, offset);
-        }
-        observable
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<List<IssueDataModel>>() {
-                    @Override
-                    public void onCompleted() {
-                    }
-                    @Override
-                    public void onError(Throwable e) {
-                        e.printStackTrace();
-                        Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                    @Override
-                    public void onNext(List<IssueDataModel> issues) {
-                        Realm realm = Realm.getDefaultInstance();
-                        // add content to the Relam DB
-                        realm.beginTransaction();
-                        realm.copyToRealmOrUpdate(issues);
-                        realm.commitTransaction();
-                        realm.close();
-                    }
-                });
-    }
-
-    private void loadDataFromDb() {
-        String stateValue = getStateValue(getTabNum());
-        Realm realm = Realm.getDefaultInstance();
-        if (stateValue.equals(ApiConst.STATE_IN_PENDING_VALUES)) {
-            mResults = realm.where(IssueDataModel.class)
-                    .contains(ApiConst.STATE_FIELD_NAME, ApiConst.STATE_IN_PENDING_VALUE_1)
-                    .or()
-                    .contains(ApiConst.STATE_FIELD_NAME, ApiConst.STATE_IN_PENDING_VALUE_2)
-                    .findAllAsync();
-        } else {
-            mResults = realm.where(IssueDataModel.class)
-                    .equalTo(ApiConst.STATE_FIELD_NAME, stateValue)
-                    .findAllAsync();
-        }
-        realm.close();
-        RealmRecyclerAdapter adapter = new RealmRecyclerAdapter(getContext(), mResults);
+    @Override
+    public void setRealmAdapter(RealmRecyclerAdapter adapter) {
         mRecyclerView.setAdapter(adapter);
-    }
-
-    private String getRequestState(int tabNum) {
-        switch (tabNum) {
-            case TAB_ONE : return ApiConst.STATE_IN_PROGRESS;
-            case TAB_TWO : return ApiConst.STATE_IN_DONE;
-            case TAB_THREE : return ApiConst.STATE_IN_PENDING;
-        }
-        return null;
-    }
-
-    private String getStateValue(int tabNum) {
-        switch (tabNum) {
-            case TAB_ONE : return ApiConst.STATE_IN_PROGRESS_VALUE;
-            case TAB_TWO : return ApiConst.STATE_IN_DONE_VALUE;
-            case TAB_THREE : return ApiConst.STATE_IN_PENDING_VALUES;
-        }
-        return null;
     }
 
     private void setUpRecyclerList() {
@@ -183,7 +89,7 @@ public class FragmentRecyclerList extends Fragment {
             public void onLoadMore(int page, int totalItemsCount) {
                 // load next amount of tickets
                 mLoadingTicketsAmount += ApiConst.TICKETS_AMOUNT;
-                loadApiData(getRequestState(getTabNum()), ApiConst.TICKETS_AMOUNT, mLoadingTicketsAmount);
+                mPresenter.loadApiDataNextPage(mLoadingTicketsAmount);
             }
         });
     }
@@ -192,32 +98,27 @@ public class FragmentRecyclerList extends Fragment {
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                clearRealmDb();
+                mPresenter.clearRealmDb();
                 mLoadingTicketsAmount = 0;
-                loadApiDataFirstPage();
-                mSwipeRefreshLayout.setRefreshing(false);
+                mPresenter.loadApiDataFirstPage();
             }
         });
     }
 
-    private void clearRealmDb() {
-        Realm realm = Realm.getDefaultInstance();
-        realm.beginTransaction();
-        realm.deleteAll();
-        realm.commitTransaction();
-        realm.close();
+    @Override
+    public void showErrorMessage(String message) {
+        Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void hideSwipeRefreshProgress(boolean progress) {
+        mSwipeRefreshLayout.setRefreshing(progress);
     }
 
     private class OnRecyclerItemClickListener extends RecyclerItemClickListener.SimpleOnItemClickListener {
         @Override
         public void onItemClick(View childView, int position) {
-//            String text = getActivity().getString(R.string.intent_to_detail_recycler_msg)
-//                    + (position + 1);
-//            Intent openDetail = new Intent(getActivity(), DetailActivity.class);
-//            openDetail.putExtra(getActivity().getString(R.string.intent_to_detail_extra_name), text);
-//            getActivity().startActivity(openDetail);
-            IssueDataModel itemModel = mResults.get(position);
-            int modelId = itemModel.getId();
+            int modelId = mPresenter.getClickedItemId(position);
             Intent openDetail = new Intent(getActivity(), DetailActivity.class);
             openDetail.putExtra(getActivity().getString(R.string.intent_to_detail_extra_name), modelId);
             getActivity().startActivity(openDetail);

@@ -4,7 +4,7 @@ import android.support.v4.app.FragmentManager;
 
 import com.example.sck.androidintership_task1.adapters.MainPagerAdapter;
 
-public class MainContract {
+public interface MainContract {
     interface Presenter {
         void preparePagerAdapter();
         void onFacebookLogInClick();
