@@ -8,7 +8,8 @@ public class DetailPresenter implements DetailContract.Presenter {
     private static final String ID_FIELD = "id";
     private DetailContract.View mView;
 
-    public DetailPresenter(DetailContract.View view) {
+    @Override
+    public void attachView(DetailContract.View view) {
         mView = view;
     }
 
@@ -20,5 +21,10 @@ public class DetailPresenter implements DetailContract.Presenter {
                 .findFirst();
         realm.close();
         mView.updateViews(model);
+    }
+
+    @Override
+    public void detachView() {
+        mView = null;
     }
 }

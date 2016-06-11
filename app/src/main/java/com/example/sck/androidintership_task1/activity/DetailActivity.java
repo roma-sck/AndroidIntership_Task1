@@ -34,6 +34,7 @@ public class DetailActivity extends AppCompatActivity implements DetailContract.
     @BindView(R.id.responsible_name) TextView mResponcibleName;
     @BindView(R.id.body) TextView mBodyText;
     private List<File> mPictures;
+    private DetailPresenter mPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +45,11 @@ public class DetailActivity extends AppCompatActivity implements DetailContract.
         // get itemId sent from Fragment
         Bundle bundle = this.getIntent().getExtras();
         int itemId = bundle.getInt(getString(R.string.intent_to_detail_extra_name));
-        DetailPresenter presenter = new DetailPresenter(this);
-        presenter.loadModelById(itemId);
+        if (mPresenter == null) {
+            mPresenter = new DetailPresenter();
+            mPresenter.attachView(this);
+        }
+        mPresenter.loadModelById(itemId);
     }
 
     @Override
@@ -132,5 +136,11 @@ public class DetailActivity extends AppCompatActivity implements DetailContract.
     @Override
     public void onClick(View view) {
         Toast.makeText(this, view.getClass().getSimpleName(), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onDestroy() {
+        mPresenter.detachView();
+        super.onDestroy();
     }
 }

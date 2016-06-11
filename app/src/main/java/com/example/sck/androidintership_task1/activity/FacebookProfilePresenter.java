@@ -28,8 +28,12 @@ public class FacebookProfilePresenter implements FacebookProfileContract.Present
     private LoginManager mLoginManager;
     private ProfileTracker mProfileTracker;
 
-    public FacebookProfilePresenter(Context context, FacebookProfileContract.View view) {
+    public FacebookProfilePresenter(Context context) {
         mContext = context;
+    }
+
+    @Override
+    public void attachView(FacebookProfileContract.View view) {
         mView = view;
     }
 
@@ -107,5 +111,10 @@ public class FacebookProfilePresenter implements FacebookProfileContract.Present
         if (mProfileTracker != null && mProfileTracker.isTracking()){
             mProfileTracker.stopTracking();
         }
+    }
+
+    @Override
+    public void detachView() {
+        mView = null;
     }
 }

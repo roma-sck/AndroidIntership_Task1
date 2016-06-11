@@ -29,8 +29,10 @@ public class FacebookProfileActivity extends AppCompatActivity implements Facebo
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_facebook_profile);
         ButterKnife.bind(this);
-
-        mPresenter = new FacebookProfilePresenter(this, this);
+        if (mPresenter == null) {
+            mPresenter = new FacebookProfilePresenter(this);
+            mPresenter.attachView(this);
+        }
         mPresenter.logInToProfile();
         mBtnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,7 +67,8 @@ public class FacebookProfileActivity extends AppCompatActivity implements Facebo
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
         mPresenter.onStopTracking();
+        mPresenter.detachView();
+        super.onDestroy();
     }
 }

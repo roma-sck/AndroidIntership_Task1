@@ -37,8 +37,10 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         setTitle(getString(R.string.all_appeals_text));
         ButterKnife.bind(this);
-
-        mPresenter = new MainPresenter(this, this);
+        if (mPresenter == null) {
+            mPresenter = new MainPresenter(this);
+            mPresenter.attachView(this);
+        }
         setUpToolbar();
         mActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,5 +121,11 @@ public class MainActivity extends AppCompatActivity
         }
         mDrawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    protected void onDestroy() {
+        mPresenter.detachView();
+        super.onDestroy();
     }
 }

@@ -25,9 +25,6 @@ public class FragmentRecyclerList extends Fragment implements FragmentContract.V
 
     @BindView(R.id.appeals_recycler_list) RecyclerView mRecyclerView;
     @BindView(R.id.swipe_to_refresh) SwipeRefreshLayout mSwipeRefreshLayout;
-    public static final int TAB_ONE = 1;
-    public static final int TAB_TWO = 2;
-    public static final int TAB_THREE = 3;
     private static final String RECYCLER_KEY = "recycler_key";
     private int mLoadingTicketsAmount = 0;
     private FragmentPresenter mPresenter;
@@ -56,7 +53,10 @@ public class FragmentRecyclerList extends Fragment implements FragmentContract.V
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mPresenter = new FragmentPresenter(getContext(), this, getTabNum());
+        if (mPresenter == null) {
+            mPresenter = new FragmentPresenter(getContext(), getTabNum());
+            mPresenter.attachView(this);
+        }
         mPresenter.initRealmDb();
     }
 
@@ -123,5 +123,11 @@ public class FragmentRecyclerList extends Fragment implements FragmentContract.V
             openDetail.putExtra(getActivity().getString(R.string.intent_to_detail_extra_name), modelId);
             getActivity().startActivity(openDetail);
         }
+    }
+
+    @Override
+    public void onDestroy() {
+        mPresenter.detachView();
+        super.onDestroy();
     }
 }

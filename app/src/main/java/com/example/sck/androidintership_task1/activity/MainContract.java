@@ -6,8 +6,10 @@ import com.example.sck.androidintership_task1.adapters.MainPagerAdapter;
 
 public interface MainContract {
     interface Presenter {
+        void attachView(View view);
         void preparePagerAdapter();
         void onFacebookLogInClick();
+        void detachView();
     }
 
     interface View {

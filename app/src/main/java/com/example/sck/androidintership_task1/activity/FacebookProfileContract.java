@@ -7,11 +7,13 @@ import com.facebook.Profile;
 
 public interface FacebookProfileContract {
     interface Presenter {
+        void attachView(View view);
         void logInToProfile();
         void onActivityResult(int requestCode, int resultCode, Intent data);
         void saveProfileToDb(Profile profile);
         void logOutProfile();
         void onStopTracking();
+        void detachView();
     }
 
     interface View {
