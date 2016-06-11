@@ -39,15 +39,6 @@
 
     <string name="toast_text">"RecyclerView's image №"</string>
 
-    <string-array name="image_urls" translatable="false">
-        <item>file:///android_asset/images/cat_01.jpg</item>
-        <item>file:///android_asset/images/cat_02.jpg</item>
-        <item>file:///android_asset/images/cat_03.jpg</item>
-        <item>file:///android_asset/images/cat_04.jpg</item>
-        <item>file:///android_asset/images/cat_05.jpg</item>
-        <item>file:///android_asset/images/cat_06.jpg</item>
-    </string-array>
-
     <!--FacebookProfileActivity strings-->
     <string name="facebook_app_id" translatable="false">1060488370699379</string>
     <string name="facebook_profile_pic_url" translatable="false">https://graph.facebook.com/</string>
