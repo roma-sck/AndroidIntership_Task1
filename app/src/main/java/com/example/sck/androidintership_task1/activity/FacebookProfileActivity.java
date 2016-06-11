@@ -3,7 +3,6 @@ package com.example.sck.androidintership_task1.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -16,7 +15,7 @@ import com.squareup.picasso.Picasso;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class FacebookProfileActivity extends AppCompatActivity implements FacebookProfileContract.View {
+public class FacebookProfileActivity extends BaseActivity implements FacebookProfileContract.View {
     @BindView (R.id.profile_image) ImageView mProfileImage;
     @BindView (R.id.profile_name) TextView mProfileName;
     @BindView (R.id.logout_btn) TextView mBtnLogout;
@@ -43,6 +42,12 @@ public class FacebookProfileActivity extends AppCompatActivity implements Facebo
                 finish();
             }
         });
+        initToolbar();
+    }
+
+    @Override
+    public void initToolbar() {
+        super.initToolbar();
     }
 
     @Override

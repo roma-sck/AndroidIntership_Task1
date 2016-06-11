@@ -1,6 +1,5 @@
 package com.example.sck.androidintership_task1.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -22,7 +21,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class DetailActivity extends AppCompatActivity implements DetailContract.View, View.OnClickListener {
+public class DetailActivity extends BaseActivity implements DetailContract.View, View.OnClickListener {
     @BindView(R.id.toolbar) Toolbar mToolbar;
     @BindView(R.id.content) ViewGroup mAllContent;
     @BindView(R.id.recycler_view) RecyclerView mRecyclerView;
@@ -61,6 +60,23 @@ public class DetailActivity extends AppCompatActivity implements DetailContract.
     }
 
     @Override
+    public void initToolbar() {
+        super.initToolbar();
+    }
+
+    /**
+     * find RecyclerView, set display downloaded images in a horizontal scrollable list
+     */
+    private void initRecyclerView() {
+        mRecyclerView.setHasFixedSize(true);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this,
+                LinearLayoutManager.HORIZONTAL, false);
+        mRecyclerView.setLayoutManager(layoutManager);
+        ImagesRecyclerAdapter adapter = new ImagesRecyclerAdapter(this, mPictures);
+        mRecyclerView.setAdapter(adapter);
+    }
+
+    @Override
     public void updateViews(IssueDataModel itemModel) {
         setTitle(itemModel.getTicketId());
         mTitle.setText(itemModel.getTitle());
@@ -81,37 +97,6 @@ public class DetailActivity extends AppCompatActivity implements DetailContract.
         if (itemModel.getFiles() != null) {
             mPictures = itemModel.getFiles();
         }
-    }
-
-    /**
-     * find the toolbar view inside the activity layout.
-     * sets the Toolbar to act as the ActionBar for this Activity window.
-     * make sure the toolbar exists in the activity and is not null, add backbutton onClick
-     */
-    private void initToolbar() {
-        setSupportActionBar(mToolbar);
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        }
-        assert mToolbar != null;
-        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
-    }
-
-    /**
-     * find RecyclerView, set display downloaded images in a horizontal scrollable list
-     */
-    private void initRecyclerView() {
-        mRecyclerView.setHasFixedSize(true);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this,
-                LinearLayoutManager.HORIZONTAL, false);
-        mRecyclerView.setLayoutManager(layoutManager);
-        ImagesRecyclerAdapter adapter = new ImagesRecyclerAdapter(this, mPictures);
-        mRecyclerView.setAdapter(adapter);
     }
 
     private void setOnClickAllViews(ViewGroup viewGroup) {
