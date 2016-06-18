@@ -29,4 +29,7 @@
 
     <string name="toast_text">"RecyclerView's зображення №"</string>
 
+    <!--MapActivity-->
+    <string name="activity_map_title">Мапа</string>
+
 </resources>

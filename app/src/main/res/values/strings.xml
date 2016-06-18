@@ -57,4 +57,8 @@
     <string name="fb_user_field_email" translatable="false">email</string>
     <string name="fb_user_field_id" translatable="false">id</string>
 
+    <!--MapActivity-->
+    <string name="activity_map_title">Map</string>
+    <!--<string name="google_maps_key" translatable="false">AIzaSyAPGwecuL6HBYE1t_zSTo8DsffDYZBswJ0</string>-->
+
 </resources>
