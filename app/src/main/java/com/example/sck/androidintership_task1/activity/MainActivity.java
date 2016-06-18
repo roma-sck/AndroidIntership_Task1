@@ -118,8 +118,7 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_all_appeals) {
             // do something
         } if (id == R.id.nav_appeals_on_map) {
-            // do something
-            startActivity(new Intent(this, MapActivity.class));
+            mPresenter.onShowMapClick();
         } if (id == R.id.nav_sing_in) {
             mPresenter.onFacebookLogInClick();
         }

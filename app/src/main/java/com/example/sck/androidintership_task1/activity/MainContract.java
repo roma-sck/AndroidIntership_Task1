@@ -8,6 +8,7 @@ public interface MainContract {
     interface Presenter {
         void attachView(View view);
         void preparePagerAdapter();
+        void onShowMapClick();
         void onFacebookLogInClick();
         void detachView();
     }

@@ -37,6 +37,11 @@ public class MainPresenter implements MainContract.Presenter {
     }
 
     @Override
+    public void onShowMapClick() {
+        mContext.startActivity(new Intent(mContext, MapActivity.class));
+    }
+
+    @Override
     public void onFacebookLogInClick() {
         mContext.startActivity(new Intent(mContext, FacebookProfileActivity.class));
     }
