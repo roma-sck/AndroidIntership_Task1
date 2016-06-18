@@ -58,6 +58,13 @@ public class FragmentPresenter implements FragmentContract.Presenter {
     }
 
     @Override
+    public void loadApiDataFirstPageAllTabs() {
+        loadApiData(getRequestState(MainPresenter.TAB_ONE), ApiConst.TICKETS_AMOUNT, ApiConst.TICKETS_WITHOUT_OFFSET);
+        loadApiData(getRequestState(MainPresenter.TAB_TWO), ApiConst.TICKETS_AMOUNT, ApiConst.TICKETS_WITHOUT_OFFSET);
+        loadApiData(getRequestState(MainPresenter.TAB_THREE), ApiConst.TICKETS_AMOUNT, ApiConst.TICKETS_WITHOUT_OFFSET);
+    }
+
+    @Override
     public void loadApiDataNextPage(int offset) {
         loadApiData(mRequestState, ApiConst.TICKETS_AMOUNT, offset);
     }

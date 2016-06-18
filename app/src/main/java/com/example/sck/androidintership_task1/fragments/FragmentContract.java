@@ -7,6 +7,7 @@ public interface FragmentContract {
         void attachView(View view);
         void initRealmDb();
         void loadApiDataFirstPage();
+        void loadApiDataFirstPageAllTabs();
         void loadDataFromDb();
         void loadApiDataNextPage(int offset);
         void clearRealmDb();

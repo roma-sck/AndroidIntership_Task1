@@ -73,6 +73,8 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void setUpViewPager(MainPagerAdapter pagerAdapter) {
         mViewPager.setAdapter(pagerAdapter);
+        // set 2 tabs that should be retained to either side of the current page
+        mViewPager.setOffscreenPageLimit(2);
         // set Tabs inside ToolbarLayout
         mTabs.setupWithViewPager(mViewPager);
     }

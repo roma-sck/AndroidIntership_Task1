@@ -100,7 +100,7 @@ public class FragmentRecyclerList extends Fragment implements FragmentContract.V
             public void onRefresh() {
                 mPresenter.clearRealmDb();
                 mLoadingTicketsAmount = 0;
-                mPresenter.loadApiDataFirstPage();
+                mPresenter.loadApiDataFirstPageAllTabs();
             }
         });
     }

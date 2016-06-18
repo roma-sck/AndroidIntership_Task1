@@ -3,18 +3,18 @@
     <string name="app_name">Android Intership Task</string>
 
     <!--MainActivity strings-->
-    <string name="all_appeals_text">Всі звернення</string>
+    <string name="all_appeals_text">All appeals</string>
 
-    <string name="appeals_tab_inWork">В роботі</string>
-    <string name="appeals_tab_done">Виконано</string>
-    <string name="appeals_tab_notDone">Очікує</string>
+    <string name="appeals_tab_inWork">In progress</string>
+    <string name="appeals_tab_done">In done</string>
+    <string name="appeals_tab_notDone">In pending</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title_text">e-contact</string>
 
-    <string name="nav_menu_item_appeals_on_map_text">"Звернення на мапі"</string>
-    <string name="nav_menu_item_sing_in_text">"Увійти в акаунт"</string>
+    <string name="nav_menu_item_appeals_on_map_text">"Appeals on Map"</string>
+    <string name="nav_menu_item_sing_in_text">"Enter to account"</string>
 
     <string name="action_filter_menu">Filter</string>
 
