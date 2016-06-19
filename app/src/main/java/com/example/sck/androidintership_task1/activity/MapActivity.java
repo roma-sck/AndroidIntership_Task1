@@ -1,19 +1,27 @@
 package com.example.sck.androidintership_task1.activity;
 
 import com.example.sck.androidintership_task1.R;
+import com.example.sck.androidintership_task1.models.GeoAddress;
+import com.example.sck.androidintership_task1.models.IssueDataModel;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-public class MapActivity extends AppCompatActivity implements OnMapReadyCallback {
+import io.realm.Realm;
+import io.realm.RealmModel;
+import io.realm.RealmResults;
+
+public class MapActivity extends BaseActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+    private static final int ZOOM_VALUE = 13;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +33,10 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
     }
 
+    @Override
+    public void initToolbar() {
+        super.initToolbar();
+    }
 
     /**
      * Manipulates the map once available.
@@ -38,20 +50,22 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-//
-//        // Add a marker in Sydney and move the camera
-//        LatLng sydney = new LatLng(-34, 151);
-//        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-//        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
 
-        LatLng sydney = new LatLng(-33.867, 151.206);
+        Realm realm = Realm.getDefaultInstance();
+        IssueDataModel model = realm.where(IssueDataModel.class)
+                .equalTo("id", 329)
+                .findFirst();
+        realm.close();
 
-//        mMap.setMyLocationEnabled(true);
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 13));
+        double latitude = Double.parseDouble(model.getGeoAddress().getLatitude());
+        double longitude = Double.parseDouble(model.getGeoAddress().getLongitude());
+        String address = model.getGeoAddress().getAddress();
 
+        LatLng id329 = new LatLng(latitude, longitude);
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(id329, ZOOM_VALUE));
         mMap.addMarker(new MarkerOptions()
-                .title("Sydney")
-                .snippet("The most populous city in Australia.")
-                .position(sydney));
+                .title(model.getTitle())
+                .snippet(address)
+                .position(id329));
     }
 }
