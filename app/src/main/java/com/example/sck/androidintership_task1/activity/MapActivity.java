@@ -14,6 +14,9 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import io.realm.Realm;
 import io.realm.RealmModel;
 import io.realm.RealmResults;
@@ -21,7 +24,7 @@ import io.realm.RealmResults;
 public class MapActivity extends BaseActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-    private static final int ZOOM_VALUE = 13;
+    private static final int ZOOM_VALUE = 9;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,20 +55,25 @@ public class MapActivity extends BaseActivity implements OnMapReadyCallback {
         mMap = googleMap;
 
         Realm realm = Realm.getDefaultInstance();
-        IssueDataModel model = realm.where(IssueDataModel.class)
-                .equalTo("id", 329)
-                .findFirst();
+        RealmResults<IssueDataModel> results = realm.where(IssueDataModel.class)
+                .findAll();
         realm.close();
 
-        double latitude = Double.parseDouble(model.getGeoAddress().getLatitude());
-        double longitude = Double.parseDouble(model.getGeoAddress().getLongitude());
-        String address = model.getGeoAddress().getAddress();
+        for(int i = 0; i < results.size(); i++) {
+            IssueDataModel model = results.get(i);
+            if(model.getGeoAddress() != null && model.getGeoAddress().getLatitude().length() > 0) {
+                double latitude = Double.parseDouble(model.getGeoAddress().getLatitude());
+                double longitude = Double.parseDouble(model.getGeoAddress().getLongitude());
+                String title = results.get(i).getTitle() + "";
+                String address = results.get(i).getGeoAddress().getAddress();
 
-        LatLng id329 = new LatLng(latitude, longitude);
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(id329, ZOOM_VALUE));
-        mMap.addMarker(new MarkerOptions()
-                .title(model.getTitle())
-                .snippet(address)
-                .position(id329));
+                LatLng location = new LatLng(latitude, longitude);
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, ZOOM_VALUE));
+                mMap.addMarker(new MarkerOptions()
+                        .title(title)
+                        .snippet(address)
+                        .position(location));
+            }
+        }
     }
 }
