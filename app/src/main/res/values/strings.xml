@@ -23,7 +23,7 @@
     <string name="intent_to_detail_listview_msg" translatable="false">"from ListView list _pos: "</string>
 
     <!--DetailActivity strings-->
-    <!--<string name="detail_toolbar_title">Appeal № СЕ-1257218</string>-->
+    <string name="detail_toolbar_title">Appeal № СЕ-1257218</string>
 
     <string name="detail_text_branch">Municipal economy</string>
     <string name="detail_text_status">In work</string>
