@@ -45,6 +45,10 @@ This is my version
 
 ![alt tag](screenshots/screenshot_task3.png)
 
+Important:
+
+-You must add Google Maps API key for Maps Activity to work correctly.
+-You must add Facebook App ID for Facebook Login.
 _________________________________________________________________
 _________________________________________________________________
 _________________________________________________________________

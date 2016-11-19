@@ -1,4 +1,4 @@
-<resources>
+﻿<resources>
 
     <string name="app_name" translatable="false">Android Intership Task</string>
 
@@ -40,7 +40,7 @@
     <string name="toast_text">"RecyclerView's image №"</string>
 
     <!--FacebookProfileActivity strings-->
-    <string name="facebook_app_id" translatable="false">1060488370699379</string>
+    <string name="facebook_app_id" translatable="false">"YOUR_FACEBOOK_APP_ID_NEEDED_HERE"</string>
     <string name="facebook_profile_pic_url" translatable="false">https://graph.facebook.com/</string>
     <string name="facebook_profile_pic_type" translatable="false">/picture?type=large</string>
     <string name="facebook_login_text" translatable="false">Login With Facebook</string>
